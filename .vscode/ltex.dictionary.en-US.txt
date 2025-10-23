@@ -1,0 +1,11 @@
+keypoints
+NeRFs
+Gaussians
+intrinsics
+extrinsics
+supersampling
+id
+ids
+NeRF-style
+promptable
+COLMAP

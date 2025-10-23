@@ -1,0 +1,128 @@
+\chapter{State of the Art}
+
+\section{Gaussian Splatting for Scene Representation}
+
+Gaussian Splatting has recently emerged as a compact and efficient method for high-quality novel-view synthesis. It provides a practical alternative to volumetric or implicit representations such as Neural Radiance Fields.~\cite{mildenhall2021nerf,barron2021mip,barron2023zipnerf}. 
+In GS, a scene is modeled as a set of anisotropic 3D Gaussian primitives, each parameterized by position, covariance, color, and opacity, which are projected and rasterized into image space. 
+
+This representation provides both high rendering fidelity and real-time performance while avoiding the computationally expensive optimization and ray marching inherent to NeRF-based methods~\cite{kerbl3Dgaussians}. 
+Because Gaussian primitives can be directly exported, edited, and recombined, 3DGS serves as a convenient intermediate representation for object-level modeling and downstream applications.
+Recent studies have extended the approach with semantic and structural grouping of Gaussian primitives.
+For instance, Gaussian Grouping~\cite{gaussian_grouping} demonstrated that semantically coherent clusters of Gaussians can be learned jointly with scene geometry, enabling object-level reasoning and segmentation directly in Gaussian space.
+Such methods illustrate that Gaussian-based representations can serve as a unified bridge between geometric reconstruction and semantic scene understanding.
+
+\section{Dynamic Extensions of Gaussian Splatting}
+
+Following the success of static 3D Gaussian Splatting (3DGS), a substantial body of work has extended the approach to dynamic scenes. 
+Two main paradigms have emerged.
+
+The first models temporal evolution explicitly by tracking Gaussian primitives over time. 
+Each Gaussian is associated with a trajectory describing its spatial and appearance changes, enabling temporal coherence without retraining. 
+Early works such as \textit{Dynamic 3D Gaussians}~\cite{luiten2024dynamic} and \textit{Dynamic Gaussian Marbles}~\cite{stearnsmarbels} follow this paradigm, deriving dense motion fields from the per-Gaussian trajectories. 
+More recent variants such as \textit{Deformable 3DGS}~\cite{yang2024deformable} incorporate deformation fields inspired by D-NeRF~\cite{pumarola2021d}, improving temporal smoothness and geometric consistency through explicit regularization. 
+These methods preserve modularity and interpretability, allowing reconstructed objects to be reused and exported, but they require careful trajectory regularization to avoid drift.
+
+The second paradigm embeds time directly into the Gaussian representation, treating the primitives as 4D entities with a temporal axis. 
+Representative approaches include \textit{4DGS}~\cite{yang2023gs4d}, \textit{SpaceTime Gaussians}~\cite{lispacetimegaussianfeaturesplattingrealtime2024}, and \textit{4D Gaussian Splatting}~\cite{wu20244d}, which employ high-dimensional parameterizations or low-rank factorizations (e.g., K-Planes \cite{fridovich2023k}) to model spatio-temporal changes in position, scale, and orientation. 
+These methods achieve globally consistent reconstructions across time but at the cost of increased computational demand and reduced flexibility. 
+Once trained, 4DGS models are monolithic and difficult to segment, edit, or recombine, making them less suited for object-centric workflows or dataset generation.
+
+From the perspective of dataset generation, the trajectory-based approach offers better modularity and reusability. It allows reconstructed objects to be relocated, duplicated, or combined across scenes, which is essential for large-scale synthetic data pipelines. Although four-dimensional representations achieve elegant temporal consistency, their high computational cost and limited flexibility make them less practical for compositional workflows. For this reason, the pipeline developed in this work adopts a trajectory-based dynamic formulation that balances temporal coherence with scalability and per-object control.
+
+\section{Synthetic Compositing and Dataset Pipelines}
+
+Parallel to developments in neural scene representations, a growing body of work addresses synthetic data generation for computer vision. 
+Approaches vary from simple image-level composition to physically grounded 3D rendering pipelines. 
+Some works create datasets by cutting out segmented objects and pasting them into real backgrounds, optionally guided by depth or matting networks~\cite{Dwibedi2017,Tobin2017,Liu2018,Li2023MattingSurvey}. 
+Others synthesize entire virtual scenes using graphics engines such as BlenderProc or Unreal Engine, enabling precise control over scene layout, lighting, and annotations~\cite{Denninger2019,Lee2018}. 
+More recent efforts combine learned 3D object models with image-based rendering to generate annotated imagery (RGB, depth, segmentation) for downstream tasks~\cite{Kirillov2023,Bertasius2020,Godard2019,Niu2021}.
+
+However, many compositing pipelines still rely on 2D-level heuristics such as monocular depth estimation or per-frame segmentation, which introduce inconsistencies across viewpoints and over time~\cite{InpaintingLimitations2019,MonoDepthLimitations2018}. 
+Promptable segmentation frameworks like SAM~\cite{Kirillov2023} have improved mask quality, but their integration into geometry-aware, multi-view pipelines remains limited~\cite{MaskPropagation2019}. 
+Using explicit 3D representations—such as object-level Gaussian models—can mitigate these issues by preserving intrinsic spatial consistency and enabling deterministic occlusion reasoning across views.
+
+Beyond masks and depth, many dataset pipelines incorporate mid-level cues such as 2D keypoints to provide additional semantic structure. 
+Modern detectors based on Mask R-CNN and Detectron2 architectures~\cite{He2017MaskRCNN,Detectron22020} produce accurate joint locations but remain frame-dependent, often suffering from temporal jitter or occlusion failures. 
+To improve stability, lightweight propagation and filtering techniques are applied to transfer reliable detections across time~\cite{MaskPropagation2019}. 
+
+\section{Gaussian Splatting for Synthetic Dataset Generation}
+
+Recently, Gaussian Splatting has been explored directly for dataset synthesis. 
+\textit{Gaussian Splatting is an Effective Data Generator for 3D Object Detection}~\cite{zanjani2025gaussiansplattingeffectivedata} employs geometric transformations to place 3D Gaussian assets in realistic scenes to improve object detection training. 
+Other works have used GS to generate domain-specific datasets, including aerial imagery~\cite{SyntheticDrone2023}, surgical data~\cite{SurgicalGS2023}, and robotic perception scenes~\cite{MobileRobotsGS2024}. 
+\textit{Cut-and-Splat}~\cite{CutAndSplat2024} further explores cut-and-paste strategies via Gaussian composition.
+
+These developments highlight the potential of Gaussian Splatting as a foundation for spatially and temporally consistent data generation.
+However, existing pipelines often focus on specific applications and lack a general-purpose system that unifies object extraction, segmentation refinement, temporal propagation, and multi-view composition. 
+The work presented in this thesis addresses this gap by providing a modular and reproducible framework that integrates static and dynamic Gaussian models into coherent multi-view environments with synchronized multimodal annotations.
+
+
+
+
+
+
+\section{Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis}
+
+One of the foundational works for dynamic Gaussian Splatting is the method proposed by Luiten et al.~\cite{luiten2024dynamic}, which introduces \textit{Dynamic 3D Gaussians} (D3DGS) for representing and tracking dynamic scenes. 
+This method forms the basis for the dynamic object reconstruction component of the pipeline developed in this work. 
+The following section provides a detailed overview of its representation, physical regularization, and optimization strategy.
+
+\subsubsection{Scene Representation}
+
+In contrast to approaches that model space and time within a shared continuum, D3DGS explicitly tracks Gaussian primitives over time. 
+While 3DGS treats Gaussians as static entities in three-dimensional space, D3DGS extends this framework by allowing their positions and orientations to vary across frames. 
+Intrinsic properties such as color, opacity, and scale remain fixed, resulting in a representation where Gaussians behave like physical particles undergoing rigid-body motion. 
+The method maintains a fixed number of Gaussians per scene rather than dynamically creating or deactivating them over time. 
+This consistency facilitates compositional workflows, as objects can be represented and manipulated uniformly across scenes. 
+To ensure physically plausible and temporally coherent motion, Luiten et al. augment the model with several regularization terms that encode physical priors.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Grafiken/Fundamentals/loss_fig_luiten.pdf}
+    \caption{Schematic illustration of the local rotation similarity loss in D3DGS~\cite{luiten2024dynamic}.}
+    \label{fig:loss_fig_luiten}
+\end{figure*}
+
+\subsubsection{Physical Regularization}
+
+The physical regularization ensures that local structures move consistently and undergo realistic motion patterns. 
+Three principal loss terms are introduced to enforce these constraints.
+
+\paragraph{Local Rigidity Loss}
+
+The rigidity loss enforces that neighboring Gaussians exhibit motion consistent with a local rigid-body transformation. 
+For each Gaussian \(i\), its neighbors \(j\) across two consecutive time steps should follow a similar transformation (see Fig.~\ref{fig:loss_fig_luiten}). 
+The loss is defined as:
+\begin{align}
+\rigidloss = \frac{1}{k|S|} \sum_{i \in S} \sum_{j \in \text{k-nn}} w_{i,j} \|(\mu_{j,t-1} - \mu_{i,t-1}) - R_{i,t-1} R_{i,t}^{-1} (\mu_{j,t} - \mu_{i,t})\|^2,
+\end{align}
+where the weighting factor \(w_{i,j}\) depends on the spatial proximity of two Gaussians in the initial configuration:
+\begin{align}
+w_{i,j} = \exp \left( -\lambda_w \|\mu_{j,0} - \mu_{i,0}\|^2 \right).
+\end{align}
+This loss preserves the relative structure of local neighborhoods over time.
+
+\paragraph{Local Rotation Similarity Loss}
+
+In addition to translation, the rotation of neighboring Gaussians should remain consistent. 
+To achieve this, a rotation similarity loss measures the difference between the quaternions representing the local motion:
+\begin{align}
+\rotloss = \frac{1}{k|S|} \sum_{i \in S} \sum_{j \in \text{k-nn}} w_{i,j} \|q_{j,t} q_{j,t-1}^{-1} - q_{i,t} q_{i,t-1}^{-1}\|^2.
+\end{align}
+This encourages spatially coherent rotational motion across neighboring Gaussians.
+
+\paragraph{Isometry Loss}
+
+The isometry loss stabilizes the distances between Gaussians over time, preventing local neighborhoods from deforming excessively. 
+It is defined as:
+\begin{align}
+\isoloss = \frac{1}{k|S|} \sum_{i \in S} \sum_{j \in \text{k-nn}} w_{i,j} \left| \|\mu_{j,0} - \mu_{i,0}\| - \|\mu_{j,t} - \mu_{i,t}\| \right|.
+\end{align}
+Compared to the more restrictive rigidity loss, this term acts as a softer constraint, allowing moderate flexibility while maintaining approximately constant inter-Gaussian distances.
+
+\subsubsection{Optimization}
+
+Optimization follows the same principle as static 3DGS and relies on the image reconstruction loss defined in Equation~\ref{eq:loss_GS}. 
+Training proceeds sequentially over time steps, leading to a linear increase in computation time with sequence length. 
+A major limitation of this formulation is its reliance on dense multi-view supervision: 
+if certain viewpoints are missing, Gaussians that become occluded or leave the field of view can no longer be reliably tracked, reducing robustness in scenes with partial visibility.

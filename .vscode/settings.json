@@ -1,0 +1,13 @@
+{
+  "latex-workshop.latex.outDir": "./output",
+  "latex-workshop.latex.rootFile.base": "thesis.tex",
+  "latex-workshop.latex.rootFile.useSubFile": false,
+  "latex-workshop.latex.rootFile.doNotPrompt": true,
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "browser",
+  "latex-workshop.message.log.show": false,
+  "latex-workshop.message.warning.show": true,
+  "[latex]": {
+    "editor.wordWrap": "on"
+  }
+}

@@ -1,0 +1,77 @@
+\documentclass[11pt,a4paper]{report} 
+
+% Für doppelseitigen Ausdruck (nur bei > 60 Seiten sinnvoll)
+% \usepackage{ifthen}
+% \setboolean{@twoside}{true}
+% \setboolean{@openright}{true} 
+
+\include{preamble} % alle Pakete und Einstellungen
+
+% Hier anpassen 
+%\newcommand{\welchethesis}{Bachelor}
+\newcommand{\welchethesis}{Master}
+\newcommand{\thesisofwas}{of Science}
+%\newcommand{\studiengang}{Technische Informatik}
+% \newcommand{\studiengang}{Medizintechnik}
+\newcommand{\studiengang}{Informationstechnik}
+\newcommand{\titel}{Compositional Gaussian Splatting for Multi-Object and Dynamic Scene
+Synthesis}
+\newcommand{\kurztitel}{Compositional Gaussian Splatting}
+\newcommand{\autor}{Luca Hebeda}
+\newcommand{\datum}{31. Oktober 2025} % Abgabedatum
+\newcommand{\ort}{Mannheim}
+\newcommand{\hochschullehrer}{Prof.\ Dr.\ Marcus Vetter}
+\newcommand{\zweikorrektor}{M. Sc. Yannick Bukschat}
+
+\begin{document}
+\include{vorspann} % Titelseite, Erklärungen, etc.
+
+\begin{abstract}
+We present a modular and methodologically transparent pipeline for multi-view and temporally consistent synthetic dataset generation based on Gaussian Splatting. 
+The framework integrates static 3D Gaussian Splatting (3DGS) and persistent Dynamic 3D Gaussian Splatting (D3DGS) into a unified system that enables reconstruction, export, and recomposition of dynamic multi-object scenes. 
+Using a hardware-synchronized 56-camera rig, we capture spatially dense and temporally aligned sequences that serve as the basis for static background reconstruction and dynamic object modeling. 
+A dedicated compositing stage allows the exported Gaussian models to be reinserted, duplicated, or combined into novel virtual environments, producing multi-view renderings with synchronized RGB, depth, segmentation, and occlusion annotations. 
+Additional modules provide pose estimation, keypoint propagation, and temporal supersampling for motion-consistent supervision signals. 
+Qualitative evaluations demonstrate that the pipeline maintains spatial coherence, robust occlusion reasoning, and temporal stability across views and environments. 
+The system establishes a practical foundation for controllable 4D dataset generation and for benchmarking methods in dynamic scene understanding.
+\end{abstract}
+
+
+\tableofcontents
+
+\onehalfspacing
+
+% \linenumbers
+\input{Kapitel/1_Introduction} % Externe Datei einbinden
+\input{Kapitel/2_Fundamentals.tex}
+\input{Kapitel/2_State_of_the_Art} % Externe Datei einbinden
+\input{Kapitel/3_Methodology} % Externe Datei einbinden
+\input{Kapitel/4_Results} % Externe Datei einbinden
+%\input{Kapitel/5_Comparison} % Externe Datei einbinden
+\input{Kapitel/5_Conclusion} % Externe Datei einbinden
+%\input{kapitel/kapitel5} % Externe Datei einbinden
+
+
+\newpage
+
+% Listen wenn überhaupt ans Ende und nicht an den Anfang.
+% Meist ist das aber unnötig.
+% \listoffigures % Liste der Abbildungen 
+% \listoftables % Liste der Tabellen
+% \newpage
+
+\bibliographystyle{plain} % Literaturverzeichnis
+% \bibliography{references}
+
+\begin{btSect}{thesis} % mit bibtopic Quellen trennen
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\section*{Literaturverzeichnis}
+\btPrintCited
+\end{btSect}
+
+% dann mit "bibtex thesis1" und "bibtex thesis2" arbeiten
+
+\end{document}
+;;; Local Variables:
+;;; ispell-local-dictionary: "de_DE-neu"
+;;; End:

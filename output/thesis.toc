@@ -1,0 +1,54 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Fundamentals}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Neural Radiance Fields}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Gaussian Splatting}{6}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Scene Representation with 3D Gaussians}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Rendering with 3D Gaussian Splatting}{7}{subsection.2.2.2}%
+\contentsline {subsubsection}{Projection of 3D Gaussians}{8}{section*.6}%
+\contentsline {subsubsection}{Simplified Covariance Computation}{8}{section*.7}%
+\contentsline {subsection}{\numberline {2.2.3}Optimization}{9}{subsection.2.2.3}%
+\contentsline {subsubsection}{Adaptive Control of 3D Gaussians}{9}{section*.8}%
+\contentsline {subsection}{\numberline {2.2.4}Differentiable Rasterizer}{9}{subsection.2.2.4}%
+\contentsline {subsubsection}{Tile-based Rasterization Process}{10}{section*.10}%
+\contentsline {subsubsection}{Rendering and Blending}{10}{section*.11}%
+\contentsline {subsubsection}{Backward Pass and Gradient Computation}{11}{section*.12}%
+\contentsline {chapter}{\numberline {3}State of the Art}{12}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Gaussian Splatting for Scene Representation}{12}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Dynamic Extensions of Gaussian Splatting}{12}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Synthetic Compositing and Dataset Pipelines}{13}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Gaussian Splatting for Synthetic Dataset Generation}{14}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Dynamic 3D Gaussians: Tracking by Persistent Dynamic View Synthesis}{15}{section.3.5}%
+\contentsline {subsubsection}{Scene Representation}{15}{section*.13}%
+\contentsline {subsubsection}{Physical Regularization}{16}{section*.15}%
+\contentsline {paragraph}{Local Rigidity Loss}{16}{section*.16}%
+\contentsline {paragraph}{Local Rotation Similarity Loss}{16}{section*.17}%
+\contentsline {paragraph}{Isometry Loss}{16}{section*.18}%
+\contentsline {subsubsection}{Optimization}{17}{section*.19}%
+\contentsline {chapter}{\numberline {4}Methodology}{18}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Pipeline A: Reconstruction of 3D and Dynamic 3D Models}{18}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Capture setup and calibration}{18}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Data Preparation: Mask Generation and Prompt Propagation}{19}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}3D / Dynamic-3D Gaussian Model Training}{20}{subsection.4.1.3}%
+\contentsline {paragraph}{External 3D assets.}{20}{section*.20}%
+\contentsline {section}{\numberline {4.2}Pipeline B: Composition and Synthetic Dataset Generation}{20}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Scene configuration and class indexing}{21}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Camera definition and interpolation}{21}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Placement duplication and motion handling}{21}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Mask rendering and mask types}{21}{subsection.4.2.4}%
+\contentsline {paragraph}{Occlusion scoring}{22}{section*.21}%
+\contentsline {subsection}{\numberline {4.2.5}6D pose estimation}{22}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Keypoint detection and propagation}{22}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Rendered outputs and metadata}{23}{subsection.4.2.7}%
+\contentsline {chapter}{\numberline {5}Results}{24}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Compositional Scene Generation}{24}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Multi-view Occlusion Handling}{25}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Scene Generalization}{25}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Temporal Consistency in Dynamic Scenes}{27}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Qualitative Pose Estimation}{27}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Keypoint Propagation}{28}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Summary and Outlook}{29}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Summary of Key Findings}{29}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Limitations}{30}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Future Developments and Research Perspectives}{30}{section.6.3}%
+\contentsline {chapter}{Literaturverzeichnis}{32}{section.6.3}%

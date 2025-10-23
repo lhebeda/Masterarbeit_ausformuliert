@@ -1,0 +1,45 @@
+\chapter{Summary and Outlook}
+
+\section{Summary of Key Findings}
+
+This work presented a modular and methodologically transparent pipeline for multi-view dataset generation based on static and dynamic 3D Gaussian Splatting representations.
+Leveraging a purpose-built, hardware-synchronized multi-camera system, temporally aligned image sequences were captured from which both static (3DGS) and dynamic (D3DGS) models were reconstructed.
+By integrating promptable segmentation (SAM2) and temporal mask propagation into the reconstruction workflow, all exported object models achieve geometric precision, temporal stability, and direct compatibility with downstream compositing.
+
+A central contribution of the proposed system is the unified treatment of static and dynamic Gaussian models within a single compositional framework.
+Pipeline~B enables deterministic scene assembly in calibrated camera rigs, producing spatially and temporally coherent outputs including RGB, depth, and instance-level masks.
+By explicitly modeling occlusion, object placement, and temporal interpolation, the pipeline allows full control over rendered datasets while maintaining photometric and geometric realism.
+This structure bridges the gap between reconstruction-focused Gaussian pipelines and practical dataset generation tools, supporting reproducible, multi-object scenes with synchronized multimodal annotations.
+
+The framework further supports the seamless integration of externally generated 3D assets—such as those exported from \emph{Trellis}—demonstrating that pre-trained or lightweight 3D models can function as first-class entities within Gaussian-based rendering and composition.
+As a result, the system generalizes across input modalities, accommodating both data-driven and generative 3D sources without modifications to the rendering logic.
+
+\section{Limitations}
+
+Despite its flexibility, several limitations should be acknowledged.
+First, dynamic reconstructions rely on per-frame segmentation masks that, despite prompt propagation, may accumulate small temporal inconsistencies under strong occlusions or motion blur.
+This can result in slight spatial drift of reconstructed Gaussians and propagated keypoints, particularly in regions with sparse Gaussian coverage such as knees or hips.
+
+Second, although the compositional framework supports both static and dynamic elements, all rendered scenes currently assume rigid camera calibration and fixed illumination.
+Consequently, phenomena such as global illumination, specular reflections, or cast shadows between independently rendered objects are not explicitly modeled, which can limit realism in certain composite configurations.
+
+Third, pose estimation for dynamic objects is derived from Gaussian trajectories rather than explicit joint-based motion models.
+While this approach ensures coherent motion propagation, it lacks semantic interpretability and may diverge from true skeletal motion.
+
+Finally, the current implementation is optimized for controlled laboratory captures using pre-calibrated multi-camera rigs.
+Generalizing to in-the-wild or handheld capture setups would require additional mechanisms to handle calibration drift, synchronization errors, and varying illumination conditions.
+
+\section{Future Developments and Research Perspectives}
+
+Several avenues remain open for further exploration.
+A natural extension involves integrating articulated motion priors and skeleton-aware Gaussian tracking, which could improve alignment of dynamic keypoints and enable physically interpretable pose propagation.
+Embedding such priors directly into the D3DGS training or composition stages may strengthen temporal coherence in regions with complex non-rigid motion, such as human limbs or deformable surfaces.
+
+Another promising direction involves scaling the capture and synthesis process toward larger and more diverse datasets.
+Automated scene composition, dynamic lighting control, and procedural environment synthesis could further enhance realism and diversity while maintaining annotation consistency.
+In parallel, coupling Gaussian-based scene representations with diffusion-based appearance refinement or NeRF-style volumetric augmentation may bridge the remaining visual gap between synthetic and real-world imagery.
+
+Finally, establishing standardized benchmarks for evaluating compositional and temporal consistency in Gaussian-rendered datasets would be highly beneficial.
+Such benchmarks could promote reproducibility, enable quantitative analysis of temporal stability, and help define a common evaluation protocol for future research in Gaussian-based dataset generation.
+
+Overall, this work demonstrates that temporally consistent Gaussian representations—when combined with geometry-aware compositing and transparent annotation pipelines—provide a practical and extensible foundation for the next generation of large-scale, multi-view training datasets.

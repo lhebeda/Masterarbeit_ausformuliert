@@ -1,0 +1,2 @@
+$makeglossaries = "makeglossaries -d output %S";   # passe 'output' an deinen %OUTDIR% an
+push @generated_exts, 'acn','acr','alg','glg','glo','gls','ist','slg','sls','syi','syg','xdy';

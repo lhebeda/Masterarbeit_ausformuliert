@@ -1,0 +1,362 @@
+\begin{thebibliography}{10}
+
+\bibitem{barron2021mip}
+Jonathan~T Barron, Ben Mildenhall, Matthew Tancik, Peter Hedman, Ricardo Martin-Brualla, and Pratul~P Srinivasan.
+\newblock Mip-nerf: A multiscale representation for anti-aliasing neural radiance fields.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on Computer Vision}, pages 5855--5864, 2021.
+
+\bibitem{barron2023zipnerf}
+Jonathan~T Barron, Ben Mildenhall, Dor Verbin, Pratul~P Srinivasan, and Peter Hedman.
+\newblock Zip-nerf: Anti-aliased grid-based neural radiance fields.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 20766--20776, 2023.
+
+\bibitem{MaskPropagation2019}
+Gedas Bertasius and Lorenzo Torresani.
+\newblock Maskprop: Classifying, segmenting, and tracking object instances in video.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on Computer Vision Workshops (ICCVW)}, 2019.
+
+\bibitem{bertasius2019maskprop}
+Gedas Bertasius and Lorenzo Torresani.
+\newblock Maskprop: Classifying, segmenting, and tracking object instances in video.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on Computer Vision Workshops (ICCVW)}, pages 970--978, 2019.
+
+\bibitem{Bertasius2020}
+Gedas Bertasius and Lorenzo Torresani.
+\newblock Classifying, segmenting, and tracking object instances in video with mask propagation.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 9739--9748, 2020.
+
+\bibitem{bradski2000opencv}
+Gary Bradski.
+\newblock The opencv library.
+\newblock {\em Dr. Dobb's Journal: Software Tools for the Professional Programmer}, 25(11):120--123, 2000.
+
+\bibitem{caohexplanefastrepresentationdynamicscenes2023}
+Ang Cao and Justin Johnson.
+\newblock Hexplane: {{A}} fast representation for dynamic scenes.
+\newblock In {\em CVPR}, 2023.
+
+\bibitem{Denninger2019}
+Markus Denninger, Martin Sundermeyer, Dominik Winkelbauer, Youssef Zidan, Dmitry Olefir, Mohy Elbadrawy, Ahsan Lodhi, Haritha Katam, Tomas Hodan, Frank Michel, Carsten Rother, and Slobodan Ilic.
+\newblock Blenderproc: A procedural pipeline for photorealistic rendering.
+\newblock {\em arXiv preprint arXiv:1911.01911}, 2019.
+
+\bibitem{denninger2019blenderproc}
+Markus Denninger, Martin Sundermeyer, Dominik Winkelbauer, Youssef Zidan, Dmitry Olefir, Mohy Elbadrawy, Ahsan Lodhi, Haritha Katam, Tomas Hodan, Frank Michel, Carsten Rother, and Slobodan Ilic.
+\newblock Blenderproc: A procedural pipeline for photorealistic rendering.
+\newblock {\em arXiv preprint arXiv:1911.01911}, 2019.
+
+\bibitem{MobileRobotsGS2024}
+Aneesh Deogan, Wout Beks, Peter Teurlings, Koen De~Vos, Mark Van Den~Brand, and Ren{\'e} Van De~Molengraft.
+\newblock Synthetic dataset generation for autonomous mobile robots using 3d gaussian splatting for vision training.
+\newblock In {\em 2025 IEEE 21st International Conference on Automation Science and Engineering (CASE)}, pages 2802--2807. IEEE, 2025.
+
+\bibitem{duneuralradianceflow4dview2021}
+Yilun Du, Yinan Zhang, Hong-Xing Yu, Joshua~B Tenenbaum, and Jiajun Wu.
+\newblock Neural radiance flow for 4d view synthesis and video processing.
+\newblock In {\em ICCV}, 2021.
+
+\bibitem{4DGSEfficiency}
+Yuanxing Duan, Fangyin Wei, Qiyu Dai, Yuhang He, Wenzheng Chen, and Baoquan Chen.
+\newblock 4d gaussian splatting: Towards efficient novel view synthesis for dynamic scenes, 2024.
+
+\bibitem{Dwibedi2017}
+Debidatta Dwibedi, Ishan Misra, and Martial Hebert.
+\newblock Cut, paste and learn: Surprisingly easy synthesis for instance detection.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer Vision (ICCV)}, pages 1310--1319, 2017.
+
+\bibitem{dwibedi2017cutpaste}
+Debidatta Dwibedi, Ishan Misra, and Martial Hebert.
+\newblock Cut, paste and learn: Surprisingly easy synthesis for instance detection.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer Vision (ICCV)}, pages 1301--1310, 2017.
+
+\bibitem{everingham2010pascal}
+Mark Everingham, Luc Van~Gool, Christopher K~I Williams, John Winn, and Andrew Zisserman.
+\newblock The pascal visual object classes (voc) challenge.
+\newblock {\em International Journal of Computer Vision}, 88(2):303--338, 2010.
+
+\bibitem{fridovich2023k}
+Sara Fridovich-Keil, Giacomo Meanti, Frederik~Rahb{\ae}k Warburg, Benjamin Recht, and Angjoo Kanazawa.
+\newblock K-planes: Explicit radiance fields in space, time, and appearance.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, pages 12479--12488, 2023.
+
+\bibitem{godard2017unsupervised}
+Cl{\'e}ment Godard, Oisin Mac~Aodha, and Gabriel~J. Brostow.
+\newblock Unsupervised monocular depth estimation with left-right consistency.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 270--279, 2017.
+
+\bibitem{MonoDepthLimitations2018}
+Clément Godard, Oisin Mac~Aodha, and Gabriel~J. Brostow.
+\newblock Unsupervised monocular depth estimation with left-right consistency.
+\newblock {\em Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 270--279, 2017.
+
+\bibitem{Godard2019}
+Clément Godard, Oisin Mac~Aodha, Michael Firman, and Gabriel~J. Brostow.
+\newblock Digging into self-supervised monocular depth estimation.
+\newblock In {\em Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)}, pages 3827--3837, 2019.
+
+\bibitem{He2017MaskRCNN}
+Kaiming He, Georgia Gkioxari, Piotr Doll{\'a}r, and Ross Girshick.
+\newblock Mask r-cnn.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer Vision (ICCV)}, pages 2961--2969, 2017.
+
+\bibitem{he2017mask}
+Kaiming He, Georgia Gkioxari, Piotr Doll{\'a}r, and Ross Girshick.
+\newblock Mask r-cnn.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer Vision (ICCV)}, pages 2961--2969, 2017.
+
+\bibitem{kajiya1984ray}
+James~T Kajiya and Brian~P Von~Herzen.
+\newblock Ray tracing volume densities.
+\newblock {\em ACM SIGGRAPH computer graphics}, 18(3):165--174, 1984.
+
+\bibitem{kerbl3Dgaussians}
+Bernhard Kerbl, Georgios Kopanas, Thomas Leimk{\"u}hler, and George Drettakis.
+\newblock 3d gaussian splatting for real-time radiance field rendering.
+\newblock {\em ACM Transactions on Graphics}, 42(4), July 2023.
+
+\bibitem{Kirillov2023}
+Alexander Kirillov, Eric Mintun, Nikhila Ravi, Zhuang Mao, C.~David Rolland, Laura Gustafson, Andrea Vedaldi, Ori Shapira, Joseph Finkelstein, Trevor Darrell, Ross Girshick, and Piotr Dollár.
+\newblock Segment anything.
+\newblock {\em arXiv preprint arXiv:2304.02643}, 2023.
+
+\bibitem{kocabas2024hugs}
+Muhammed Kocabas, Jen-Hao~Rick Chang, James Gabriel, Oncel Tuzel, and Anurag Ranjan.
+\newblock Hugs: Human gaussian splats.
+\newblock In {\em CVPR}, 2024.
+
+\bibitem{synthetic_data_unity}
+Ruksi Korpisara.
+\newblock Synthetic training dataset with unity.
+\newblock https://valohai.com/blog/synthetic-training-dataset-generation-with-unity/.
+\newblock Online; accessed February 27, 2024.
+
+\bibitem{krizhevsky2012imagenet}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages 1097--1105, 2012.
+
+\bibitem{lecun2015deep}
+Yann LeCun, Yoshua Bengio, and Geoffrey Hinton.
+\newblock Deep learning.
+\newblock {\em Nature}, 521(7553):436--444, 2015.
+
+\bibitem{Lee2018}
+Donghoon Lee, Sifei Liu, Jinwei Gu, Ming-Yu Liu, Ming-Hsuan Yang, and Jan Kautz.
+\newblock Context-aware synthesis and placement of object instances.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)}, 2018.
+
+\bibitem{Li2023MattingSurvey}
+Jiayi Li, Li~Niu, and Liqing Zhang.
+\newblock Deep image matting: A comprehensive survey.
+\newblock {\em arXiv preprint arXiv:2304.04672}, 2023.
+
+\bibitem{VR_interacting}
+Ke~Li, Tim Rolff, Susanne Schmidt, Reinhard Bacher, Wim Leemans, and Frank Steinicke.
+\newblock Interacting with neural radiance fields in immersive virtual reality.
+\newblock In {\em Extended Abstracts of the 2023 CHI Conference on Human Factors in Computing Systems}, pages 1--4, 2023.
+
+\bibitem{li2022neural}
+Tianye Li, Mira Slavcheva, Michael Zollhoefer, Simon Green, Christoph Lassner, Changil Kim, Tanner Schmidt, Steven Lovegrove, Michael Goesele, Richard Newcombe, et~al.
+\newblock Neural 3d video synthesis from multi-view video.
+\newblock In {\em CVPR}, 2022.
+
+\bibitem{lispacetimegaussianfeaturesplattingrealtime2024}
+Zhan Li, Zhang Chen, Zhong Li, and Yi~Xu.
+\newblock Spacetime gaussian feature splatting for real-time dynamic view synthesis.
+\newblock In {\em CVPR}, 2024.
+
+\bibitem{lineuralsceneflowfieldsspacetime2021}
+Zhengqi Li, Simon Niklaus, Noah Snavely, and Oliver Wang.
+\newblock Neural scene flow fields for space-time view synthesis of dynamic scenes.
+\newblock In {\em CVPR}, 2021.
+
+\bibitem{lin2014microsoft}
+Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva Ramanan, Piotr Doll{\'a}r, and C~Lawrence Zitnick.
+\newblock Microsoft coco: Common objects in context.
+\newblock In {\em European Conference on Computer Vision (ECCV)}, pages 740--755. Springer, 2014.
+
+\bibitem{Liu2018}
+Guilin Liu, Fitsum~A. Reda, Kevin~J. Shih, Ting-Chun Wang, Andrew Tao, and Bryan Catanzaro.
+\newblock Image inpainting for irregular holes using partial convolutions.
+\newblock {\em Proceedings of the European Conference on Computer Vision (ECCV)}, pages 85--100, 2018.
+
+\bibitem{luiten2024dynamic}
+Jonathon Luiten, Georgios Kopanas, Bastian Leibe, and Deva Ramanan.
+\newblock Dynamic 3d gaussians: Tracking by persistent dynamic view synthesis.
+\newblock In {\em International Conference on 3D Vision (3DV)}, 2024.
+
+\bibitem{max1995optical}
+Nelson Max.
+\newblock Optical models for direct volume rendering.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics}, 1(2):99--108, 1995.
+
+\bibitem{mildenhall2021nerf}
+Ben Mildenhall, Pratul~P Srinivasan, Matthew Tancik, Jonathan~T Barron, Ravi Ramamoorthi, and Ren Ng.
+\newblock Nerf: Representing scenes as neural radiance fields for view synthesis.
+\newblock {\em Communications of the ACM}, 65(1):99--106, 2021.
+
+\bibitem{muller2022instant}
+Thomas M{\"u}ller, Alex Evans, Christoph Schied, and Alexander Keller.
+\newblock Instant neural graphics primitives with a multiresolution hash encoding.
+\newblock {\em ACM Transactions on Graphics (ToG)}, 41(4):1--15, 2022.
+
+\bibitem{Niu2021}
+Li~Niu, Wenyan Cong, Liu Liu, Yan Hong, Bo~Zhang, Jing Liang, and Liqing Zhang.
+\newblock Making images real again: A comprehensive survey on deep image composition.
+\newblock {\em arXiv preprint arXiv:2106.14490}, 2021.
+
+\bibitem{park2021nerfies}
+Keunhong Park, Utkarsh Sinha, Jonathan~T Barron, Sofien Bouaziz, Dan~B Goldman, Steven~M Seitz, and Ricardo Martin-Brualla.
+\newblock Nerfies: Deformable neural radiance fields.
+\newblock In {\em Proceedings of the IEEE/CVF international conference on computer vision}, pages 5865--5874, 2021.
+
+\bibitem{park2021hypernerf}
+Keunhong Park, Utkarsh Sinha, Peter Hedman, Jonathan~T Barron, Sofien Bouaziz, Dan~B Goldman, Ricardo Martin-Brualla, and Steven~M Seitz.
+\newblock Hypernerf: a higher-dimensional representation for topologically varying neural radiance fields.
+\newblock {\em ACM TOG}, 40(6), 2021.
+
+\bibitem{Raycasting_fig}
+Martino Pilia.
+\newblock https://martinopilia.com/posts/2018/09/17/volume-raycasting.html.
+\newblock Online; accessed February 18, 2024.
+
+\bibitem{pumarola2021d}
+Albert Pumarola, Enric Corona, Gerard Pons-Moll, and Francesc Moreno~Noguer.
+\newblock D-nerf: Neural radiance fields for dynamic scenes.
+\newblock In {\em CVPR}, 2021.
+
+\bibitem{ravi2024sam2}
+Nikhila Ravi, Valentin Gabeur, Yuan-Ting Hu, Ronghang Hu, Chaitanya Ryali, Tengyu Ma, Haitham Khedr, Roman R{\"a}dle, Chloe Rolland, Laura Gustafson, et~al.
+\newblock Sam 2: Segment anything in images and videos.
+\newblock {\em arXiv preprint arXiv:2408.00714}, 2024.
+
+\bibitem{schoenberger2016sfm}
+Johannes~Lutz Sch\"{o}nberger and Jan-Michael Frahm.
+\newblock Structure-from-motion revisited.
+\newblock In {\em Conference on Computer Vision and Pattern Recognition (CVPR)}, 2016.
+
+\bibitem{schoenberger2016mvs}
+Johannes~Lutz Sch\"{o}nberger, Enliang Zheng, Marc Pollefeys, and Jan-Michael Frahm.
+\newblock Pixelwise view selection for unstructured multi-view stereo.
+\newblock In {\em European Conference on Computer Vision (ECCV)}, 2016.
+
+\bibitem{songnerfplayer}
+Liangchen Song, Anpei Chen, Zhong Li, Zhang Chen, Lele Chen, Junsong Yuan, Yi~Xu, and Andreas Geiger.
+\newblock Nerfplayer: {{A}} streamable dynamic scene representation with decomposed neural radiance fields.
+\newblock {\em TVCG}, 29(5), 2023.
+
+\bibitem{stearnsmarbels}
+Colton Stearns, Adam Harley, Mikaela Uy, Florian Dubost, Federico Tombari, Gordon Wetzstein, and Leonidas Guibas.
+\newblock Dynamic gaussian marbles for novel view synthesis of casual monocular videos.
+\newblock In {\em SIGGRAPH Asia}, 2024.
+
+\bibitem{SyntheticDrone2023}
+Stina Strandberg.
+\newblock Synthetic data generation for object detection with nerf and gaussian splatting: Enhancing synthetic drone detection with neural and point-based rendering techniques in unreal engine 5, 2025.
+
+\bibitem{sun2017revisiting}
+Chen Sun, Abhinav Shrivastava, Saurabh Singh, and Abhinav Gupta.
+\newblock Revisiting unreasonable effectiveness of data in deep learning era.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer Vision (ICCV)}, pages 843--852, 2017.
+
+\bibitem{Tobin2017}
+Josh Tobin, Rachel Fong, Alex Ray, Jonas Schneider, Wojciech Zaremba, and Pieter Abbeel.
+\newblock Domain randomization for transferring deep neural networks from simulation to the real world.
+\newblock In {\em 2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, pages 23--30, 2017.
+
+\bibitem{tobin2017domain}
+Josh Tobin, Rachel Fong, Alex Ray, Jonas Schneider, Wojciech Zaremba, and Pieter Abbeel.
+\newblock Domain randomization for transferring deep neural networks from simulation to the real world.
+\newblock In {\em 2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, pages 23--30. IEEE, 2017.
+
+\bibitem{CutAndSplat2024}
+Bram Vanhele, Brent Zoomers, Jeroen Put, Frank~Van Reeth, and Nick Michiels.
+\newblock Cut-and-splat: Leveraging gaussian splatting for synthetic data generation.
+\newblock In {\em International Conference on Robotics, Computer Vision and Intelligent Systems}, pages 44--62. Springer, 2025.
+
+\bibitem{wang2004image}
+Zhou Wang, Alan~C Bovik, Hamid~R Sheikh, and Eero~P Simoncelli.
+\newblock Image quality assessment: from error visibility to structural similarity.
+\newblock {\em IEEE transactions on image processing}, 13(4):600--612, 2004.
+
+\bibitem{PSNR}
+Wikipedia.
+\newblock Peak signal-to-noise ratio --- {Wikipedia}{,} die freie enzyklopädie, 2023.
+\newblock [Online; Stand 18. Februar 2024].
+
+\bibitem{raytracing}
+Wikipedia.
+\newblock Raytracing --- wikipedia{,} die freie enzyklopädie, 2024.
+\newblock [Online; Stand 18. Februar 2024].
+
+\bibitem{wu20244d}
+Guanjun Wu, Taoran Yi, Jiemin Fang, Lingxi Xie, Xiaopeng Zhang, Wei Wei, Wenyu Liu, Qi~Tian, and Xinggang Wang.
+\newblock 4d gaussian splatting for real-time dynamic scene rendering.
+\newblock In {\em CVPR}, 2024.
+
+\bibitem{Detectron22020}
+Yuxin Wu, Alexander Kirillov, Francisco Massa, Wan-Yen Lo, and Ross Girshick.
+\newblock Detectron2.
+\newblock \url{https://github.com/facebookresearch/detectron2}, 2019.
+\newblock Facebook AI Research.
+
+\bibitem{xiang2024structured}
+Jianfeng Xiang, Zelong Lv, Sicheng Xu, Yu~Deng, Ruicheng Wang, Bowen Zhang, Dong Chen, Xin Tong, and Jiaolong Yang.
+\newblock Structured 3d latents for scalable and versatile 3d generation.
+\newblock {\em arXiv preprint arXiv:2412.01506}, 2024.
+
+\bibitem{yang2023gs4d}
+Zeyu Yang, Hongye Yang, Zijie Pan, and Li~Zhang.
+\newblock Real-time photorealistic dynamic scene representation and rendering with 4d gaussian splatting.
+\newblock In {\em International Conference on Learning Representations (ICLR)}, 2024.
+
+\bibitem{yang2024deformable}
+Ziyi Yang, Xinyu Gao, Wen Zhou, Shaohui Jiao, Yuqing Zhang, and Xiaogang Jin.
+\newblock Deformable 3d gaussians for high-fidelity monocular dynamic scene reconstruction.
+\newblock In {\em CVPR}, 2024.
+
+\bibitem{gaussian_grouping}
+Mingqiao Ye, Martin Danelljan, Fisher Yu, and Lei Ke.
+\newblock Gaussian grouping: Segment and edit anything in 3d scenes.
+\newblock In {\em ECCV}, 2024.
+
+\bibitem{InpaintingLimitations2019}
+Jiahui Yu, Zhe Lin, Jimei Yang, Xiaohui Shen, Xin Lu, and Thomas~S. Huang.
+\newblock Free-form image inpainting with gated convolution.
+\newblock {\em Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)}, pages 4471--4480, 2019.
+
+\bibitem{yuan20251000fps4dgaussian}
+Yuheng Yuan, Qiuhong Shen, Xingyi Yang, and Xinchao Wang.
+\newblock 1000+ fps 4d gaussian splatting for dynamic scene rendering, 2025.
+
+\bibitem{zanjani2025gaussiansplattingeffectivedata}
+Farhad~G. Zanjani, Davide Abati, Auke Wiggers, Dimitris Kalatzis, Jens Petersen, Hong Cai, and Amirhossein Habibian.
+\newblock Gaussian splatting is an effective data generator for 3d object detection, 2025.
+
+\bibitem{zanjani2025gaussian}
+Farhad~G. Zanjani, Davide Abati, Auke Wiggers, Dimitris Kalatzis, Jens Petersen, Hong Cai, and Amirhossein Habibian.
+\newblock Gaussian splatting is an effective data generator for 3d object detection.
+\newblock {\em arXiv preprint arXiv:2501.00000}, 2025.
+\newblock To appear in CVPR 2025.
+
+\bibitem{SurgicalGS2023}
+Tianle Zeng, Gerardo Loza~Galindo, Junlei Hu, Pietro Valdastri, and Dominic Jones.
+\newblock Realistic surgical image dataset generation based on 3d gaussian splatting.
+\newblock In {\em International Conference on Medical Image Computing and Computer-Assisted Intervention}, pages 510--519. Springer, 2024.
+
+\bibitem{zhou2024drivinggaussian}
+Xiaoyu Zhou, Zhiwei Lin, Xiaojun Shan, Yongtao Wang, Deqing Sun, and Ming-Hsuan Yang.
+\newblock Drivinggaussian: {{Composite}} gaussian splatting for surrounding dynamic autonomous driving scenes.
+\newblock In {\em CVPR}, 2024.
+
+\bibitem{zollhoefer2018state}
+Michael Zollh{\"o}fer, Patrick Stotko, Alexander Görlitz, Christian Theobalt, Matthias Nießner, Marc Stamminger, Marcus Magnor, and Andreas Kolb.
+\newblock State of the art on 3d reconstruction with rgb-d cameras.
+\newblock {\em Computer Graphics Forum}, 37(2):625--652, 2018.
+
+\bibitem{zwicker2001ewa}
+Matthias Zwicker, Hanspeter Pfister, Jeroen Van~Baar, and Markus Gross.
+\newblock Ewa volume splatting.
+\newblock In {\em Proceedings Visualization, 2001. VIS'01.}, pages 29--538. IEEE, 2001.
+
+\end{thebibliography}
