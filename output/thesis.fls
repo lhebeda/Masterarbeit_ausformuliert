@@ -328,13 +328,13 @@ INPUT output/thesis.toc
 INPUT output/thesis.toc
 INPUT c:/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplb8t.vf
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplb8r.tfm
-OUTPUT output/thesis.toc
 INPUT c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd
 INPUT c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvr8t.tfm
 INPUT c:/texlive/2025/texmf-dist/fonts/vf/adobe/helvetic/phvr8t.vf
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/adobe/helvetic/phvr8r.tfm
+OUTPUT output/thesis.toc
 INPUT ./Kapitel/1_Introduction.tex
 INPUT ./Kapitel/1_Introduction.tex
 INPUT ./Kapitel/1_Introduction.tex

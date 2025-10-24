@@ -56,12 +56,14 @@
 \contentsline {subsection}{\numberline {3.4.6}Keypoint detection and propagation}{28}{subsection.3.4.6}%
 \contentsline {subsection}{\numberline {3.4.7}Rendered outputs and metadata}{28}{subsection.3.4.7}%
 \contentsline {chapter}{\numberline {4}Results}{29}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Compositional Scene Generation}{29}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Multi-view Occlusion Handling}{30}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Scene Generalization}{30}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Temporal Consistency in Dynamic Scenes}{32}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Qualitative Pose Estimation}{32}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Keypoint Propagation}{33}{section.4.6}%
+\contentsline {section}{\numberline {4.1}Model Evaluation}{29}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Composition Pipeline Evaluation}{29}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Compositional Scene Generation}{29}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Multi-view Occlusion Handling}{30}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Scene Generalization}{31}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Temporal Consistency in Dynamic Scenes}{31}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Qualitative Pose Estimation}{32}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Keypoint Propagation}{33}{section.4.8}%
 \contentsline {chapter}{\numberline {5}Summary and Outlook}{34}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Summary of Key Findings}{34}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Limitations}{35}{section.5.2}%
