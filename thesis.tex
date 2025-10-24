@@ -13,7 +13,7 @@
 \newcommand{\thesisofwas}{of Science}
 %\newcommand{\studiengang}{Technische Informatik}
 % \newcommand{\studiengang}{Medizintechnik}
-\newcommand{\studiengang}{Informationstechnik}
+\newcommand{\studiengang}{Information Technology}
 \newcommand{\titel}{Compositional Gaussian Splatting for Multi-Object and Dynamic Scene
 Synthesis}
 \newcommand{\kurztitel}{Compositional Gaussian Splatting}
@@ -24,7 +24,11 @@ Synthesis}
 \newcommand{\zweikorrektor}{M. Sc. Yannick Bukschat}
 
 \begin{document}
-\include{vorspann} % Titelseite, Erklärungen, etc.
+
+% --- FRONTMATTER ---
+\pagenumbering{gobble}
+
+\include{vorspann}
 
 \begin{abstract}
 We present a modular and methodologically transparent pipeline for multi-view and temporally consistent synthetic dataset generation based on Gaussian Splatting. 
@@ -38,7 +42,9 @@ The system establishes a practical foundation for controllable 4D dataset genera
 
 
 \tableofcontents
+\cleardoublepage
 
+\pagenumbering{arabic}
 \onehalfspacing
 
 % \linenumbers
@@ -51,7 +57,6 @@ The system establishes a practical foundation for controllable 4D dataset genera
 \input{Kapitel/5_Conclusion} % Externe Datei einbinden
 %\input{kapitel/kapitel5} % Externe Datei einbinden
 
-
 \newpage
 
 % Listen wenn überhaupt ans Ende und nicht an den Anfang.
@@ -60,18 +65,66 @@ The system establishes a practical foundation for controllable 4D dataset genera
 % \listoftables % Liste der Tabellen
 % \newpage
 
+% % List of Figures
+% \addcontentsline{toc}{chapter}{List of Figures}
+% \listoffigures
+
+\cleardoublepage
+
 \bibliographystyle{plain} % Literaturverzeichnis
 % \bibliography{references}
 
 \begin{btSect}{thesis} % mit bibtopic Quellen trennen
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}
-\section*{Literaturverzeichnis}
+\addcontentsline{toc}{chapter}{References}
+% \markboth{References}{References}
+\section*{References}
 \btPrintCited
 \end{btSect}
+
+
+
+
+
+
+
+% Listen wenn überhaupt ans Ende und nicht an den Anfang.
+% Meist ist das aber unnötig.
+% \listoffigures % Liste der Abbildungen 
+% \listoftables % Liste der Tabellen
+% \newpage
+
+% \bibliographystyle{plain} % Literaturverzeichnis
+% \bibliography{references}
+
+
+% \cleardoublepage
+% \phantomsection
+% \addcontentsline{toc}{chapter}{List of Tables}
+% \listoftables
+
+% Abbildungsverzeichnis erzeugen
+% \cleardoublepage
+% \phantomsection
+% \addcontentsline{toc}{chapter}{List of Figures}
+% \listoffigures
+
+% \cleardoublepage
+% \begin{btSect}{thesis} % mit bibtopic Quellen trennen
+% \addcontentsline{toc}{chapter}{References}
+% \section*{References}
+% \btPrintCited
+% \end{btSect}
+
+% \addchap{List of Abbreviations}
+% \input{kapitel/9_abkuerzungen.tex}
+
+% Tabellenverzeichnis erzeugen
+
 
 % dann mit "bibtex thesis1" und "bibtex thesis2" arbeiten
 
 \end{document}
+
 ;;; Local Variables:
 ;;; ispell-local-dictionary: "de_DE-neu"
 ;;; End:

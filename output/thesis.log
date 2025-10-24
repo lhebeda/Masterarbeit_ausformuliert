@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.14)  23 OCT 2025 16:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.10.14)  24 OCT 2025 11:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -711,19 +711,19 @@ Package pdftex.def Info: images/thmannheimlogo_grey.pdf  used on input line 9.
 {c:/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc} <./images/thmannheimlogo_grey.pdf>]
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.55 \cleardoublepage
+l.68 \cleardoublepage
                       [1
 
 ])
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.37 \end{abstract}
+l.41 \end{abstract}
                     [1
 
 
@@ -731,70 +731,76 @@ l.37 \end{abstract}
 ] (output/thesis.toc
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.36 ...n and interpolation}{21}{subsection.4.2.2}
+l.36 ...n and interpolation}{19}{subsection.4.2.2}
                                                   % [1
 
 ])
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
- (./Kapitel/1_Introduction.tex
 
-LaTeX Font Info:    Trying to load font information for T1+phv on input line 1.
+
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 45.
 (c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 1.
+(Font)              scaled to size 8.54997pt on input line 45.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [2]
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.45 \cleardoublepage
+                      [2] (./Kapitel/1_Introduction.tex
 Chapter 1.
 
 
-[3
+[1
+
 
 ]) (./Kapitel/2_Fundamentals.tex
 
-[4]
+[2]
 Chapter 2.
-<Grafiken/Fundamentals/teaser_small.pdf, id=322, 1070.58968pt x 243.65228pt>
+<Grafiken/Fundamentals/teaser_small.pdf, id=321, 1070.58968pt x 243.65228pt>
 File: Grafiken/Fundamentals/teaser_small.pdf Graphic file (type pdf)
 <use Grafiken/Fundamentals/teaser_small.pdf>
 Package pdftex.def Info: Grafiken/Fundamentals/teaser_small.pdf  used on input line 17.
 (pdftex.def)             Requested size: 404.02904pt x 91.95308pt.
 
 
-[5
+[3
 
  <./Grafiken/Fundamentals/teaser_small.pdf>]
-<Grafiken/Fundamentals/pipeline.pdf, id=454, 772.80719pt x 229.70619pt>
+<Grafiken/Fundamentals/pipeline.pdf, id=453, 772.80719pt x 229.70619pt>
 File: Grafiken/Fundamentals/pipeline.pdf Graphic file (type pdf)
 <use Grafiken/Fundamentals/pipeline.pdf>
 Package pdftex.def Info: Grafiken/Fundamentals/pipeline.pdf  used on input line 30.
 (pdftex.def)             Requested size: 404.02904pt x 120.09282pt.
-<Grafiken/Fundamentals/overview_01.pdf, id=459, 586.80833pt x 108.21329pt>
+<Grafiken/Fundamentals/overview_01.pdf, id=458, 586.80833pt x 108.21329pt>
 File: Grafiken/Fundamentals/overview_01.pdf Graphic file (type pdf)
 <use Grafiken/Fundamentals/overview_01.pdf>
 Package pdftex.def Info: Grafiken/Fundamentals/overview_01.pdf  used on input line 50.
 (pdftex.def)             Requested size: 404.02904pt x 74.50871pt.
 
 
-[6 <./Grafiken/Fundamentals/pipeline.pdf>]
+[4 <./Grafiken/Fundamentals/pipeline.pdf>]
 
-[7 <./Grafiken/Fundamentals/overview_01.pdf>]
+[5 <./Grafiken/Fundamentals/overview_01.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 88.
  (c:/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 
-[8]
-<Grafiken/Fundamentals/density_control_01.pdf, id=625, 280.95967pt x 165.21526pt>
+[6]
+<Grafiken/Fundamentals/density_control_01.pdf, id=624, 280.95967pt x 165.21526pt>
 File: Grafiken/Fundamentals/density_control_01.pdf Graphic file (type pdf)
 <use Grafiken/Fundamentals/density_control_01.pdf>
 Package pdftex.def Info: Grafiken/Fundamentals/density_control_01.pdf  used on input line 139.
@@ -805,116 +811,129 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
+[7]
+
+[8 <./Grafiken/Fundamentals/density_control_01.pdf>]) (./Kapitel/2_State_of_the_Art.tex
+
 [9]
-
-[10 <./Grafiken/Fundamentals/density_control_01.pdf>]) (./Kapitel/2_State_of_the_Art.tex
-
-[11]
 Chapter 3.
 
 
-[12
+[10
 
 ]
 
-[13]
+[11]
 
-[14]
-<Grafiken/Fundamentals/loss_fig_luiten.pdf, id=771, 563.70598pt x 224.037pt>
+[12]
+<Grafiken/Fundamentals/loss_fig_luiten.pdf, id=770, 563.70598pt x 224.037pt>
 File: Grafiken/Fundamentals/loss_fig_luiten.pdf Graphic file (type pdf)
 <use Grafiken/Fundamentals/loss_fig_luiten.pdf>
 Package pdftex.def Info: Grafiken/Fundamentals/loss_fig_luiten.pdf  used on input line 81.
 (pdftex.def)             Requested size: 404.02904pt x 160.57835pt.
 
 
-[15 <./Grafiken/Fundamentals/loss_fig_luiten.pdf>]) (./Kapitel/3_Methodology.tex
+[13 <./Grafiken/Fundamentals/loss_fig_luiten.pdf>]) (./Kapitel/3_Methodology.tex
 
-[16]
+[14]
 
-[17]
+[15]
 Chapter 4.
+<Grafiken/Ablauf.pdf, id=836, 335.42572pt x 210.5807pt>
+File: Grafiken/Ablauf.pdf Graphic file (type pdf)
+<use Grafiken/Ablauf.pdf>
+Package pdftex.def Info: Grafiken/Ablauf.pdf  used on input line 11.
+(pdftex.def)             Requested size: 363.62366pt x 228.29453pt.
 
 
-[18
+[16
 
 ]
 
+[17 <./Grafiken/Ablauf.pdf>]
+
+[18]
+
 [19]
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 79.
+ (c:/texlive/2025/texmf-dist/tex/latex/psnfss/ufplmbb.fd
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+)
 
 [20]
 
-[21]
+[21]) (./Kapitel/4_Results.tex
 
-[22]) (./Kapitel/4_Results.tex
-
-[23]
+[22]
 Chapter 5.
 
 
-[24
+[23
 
 ]
-<Grafiken/Composition.pdf, id=878, 597.50786pt x 190.63345pt>
+<Grafiken/Composition.pdf, id=912, 597.50786pt x 190.63345pt>
 File: Grafiken/Composition.pdf Graphic file (type pdf)
 <use Grafiken/Composition.pdf>
 Package pdftex.def Info: Grafiken/Composition.pdf  used on input line 23.
 (pdftex.def)             Requested size: 404.02904pt x 128.90471pt.
-<Grafiken/Oclusion.pdf, id=880, 300.17657pt x 96.73935pt>
+<Grafiken/Oclusion.pdf, id=914, 300.17657pt x 96.73935pt>
 File: Grafiken/Oclusion.pdf Graphic file (type pdf)
 <use Grafiken/Oclusion.pdf>
 Package pdftex.def Info: Grafiken/Oclusion.pdf  used on input line 42.
 (pdftex.def)             Requested size: 404.02904pt x 130.21603pt.
 
 
-[25 <./Grafiken/Composition.pdf>]
-<Grafiken/room_transfer.pdf, id=899, 300.17657pt x 96.73935pt>
+[24 <./Grafiken/Composition.pdf>]
+<Grafiken/room_transfer.pdf, id=933, 300.17657pt x 96.73935pt>
 File: Grafiken/room_transfer.pdf Graphic file (type pdf)
 <use Grafiken/room_transfer.pdf>
 Package pdftex.def Info: Grafiken/room_transfer.pdf  used on input line 60.
 (pdftex.def)             Requested size: 404.02904pt x 130.21603pt.
 
 
-[26 <./Grafiken/Oclusion.pdf> <./Grafiken/room_transfer.pdf>]
-<Grafiken/time.pdf, id=913, 597.50786pt x 190.63345pt>
+[25 <./Grafiken/Oclusion.pdf> <./Grafiken/room_transfer.pdf>]
+<Grafiken/time.pdf, id=947, 597.50786pt x 190.63345pt>
 File: Grafiken/time.pdf Graphic file (type pdf)
 <use Grafiken/time.pdf>
 Package pdftex.def Info: Grafiken/time.pdf  used on input line 79.
 (pdftex.def)             Requested size: 404.02904pt x 128.90471pt.
 
 
-[27 <./Grafiken/time.pdf>]
-<Grafiken/keypoints.pdf, id=933, 597.50786pt x 190.63345pt>
+[26 <./Grafiken/time.pdf>]
+<Grafiken/keypoints.pdf, id=968, 597.50786pt x 190.63345pt>
 File: Grafiken/keypoints.pdf Graphic file (type pdf)
 <use Grafiken/keypoints.pdf>
 Package pdftex.def Info: Grafiken/keypoints.pdf  used on input line 107.
 (pdftex.def)             Requested size: 404.02904pt x 128.90471pt.
 ) (./Kapitel/5_Conclusion.tex
 
-[28 <./Grafiken/keypoints.pdf>]
+[27 <./Grafiken/keypoints.pdf>]
 Chapter 6.
 
 
-[29
+[28
 
 ]
 
-[30])
+[29])
 
-[31]
+[30]
 \openout3 = `btaux.aux'.
 
 \openout3 = `thesis1.aux'.
 
  (output/thesis1.bbl
 
+[31
+
+]
+
 [32]
 
 [33]
 
 [34]
-
-[35]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 300.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 305.
  (c:/texlive/2025/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -923,35 +942,35 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 2790) in paragraph at lines 298--302
+Underfull \hbox (badness 2790) in paragraph at lines 303--307
 \T1/ppl/m/n/10.95 (+20) De-tec-tron2.  [][]$\T1/pcr/m/n/10.95 https : / / github . com / facebookresearch / detectron2$[][]\T1/ppl/m/n/10.95 (+20) ,
  []
 
 
 
-[36])
+[35])
 
-[37] (output/thesis.aux (output/vorspann.aux))
+[36] (output/thesis.aux (output/vorspann.aux))
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: DF132FDF6F73E16BFAFDC83B3CEF87FA;8460.
+(rerunfilecheck)             Checksum: E870045134BCEA3B8A1EC6CF25CE7727;8410.
  ) 
 Here is how much of TeX's memory you used:
- 20384 strings out of 467748
- 325827 string characters out of 5431137
- 919001 words of memory out of 5000000
- 48202 multiletter control sequences out of 15000+600000
- 679328 words of font info for 323 fonts, out of 8000000 for 9000
+ 20431 strings out of 467748
+ 326712 string characters out of 5431137
+ 920001 words of memory out of 5000000
+ 48229 multiletter control sequences out of 15000+600000
+ 679961 words of font info for 331 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 93i,13n,138p,1070b,691s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on output/thesis.pdf (40 pages, 24082497 bytes).
+ 93i,15n,138p,1070b,691s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb><c:/texlive/2025/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2025/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on output/thesis.pdf (41 pages, 26641010 bytes).
 PDF statistics:
- 1077 PDF objects out of 1200 (max. 8388607)
- 748 compressed objects within 8 object streams
- 164 named destinations out of 1000 (max. 500000)
- 65904 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 1116 PDF objects out of 1200 (max. 8388607)
+ 772 compressed objects within 8 object streams
+ 173 named destinations out of 1000 (max. 500000)
+ 65909 words of extra memory for PDF output out of 74296 (max. 10000000)
 

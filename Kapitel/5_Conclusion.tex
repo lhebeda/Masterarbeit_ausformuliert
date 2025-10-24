@@ -11,7 +11,7 @@ Pipeline~B enables deterministic scene assembly in calibrated camera rigs, produ
 By explicitly modeling occlusion, object placement, and temporal interpolation, the pipeline allows full control over rendered datasets while maintaining photometric and geometric realism.
 This structure bridges the gap between reconstruction-focused Gaussian pipelines and practical dataset generation tools, supporting reproducible, multi-object scenes with synchronized multimodal annotations.
 
-The framework further supports the seamless integration of externally generated 3D assets—such as those exported from \emph{Trellis}—demonstrating that pre-trained or lightweight 3D models can function as first-class entities within Gaussian-based rendering and composition.
+The framework further supports the seamless integration of externally generated 3D assets, such as those exported from \emph{Trellis}, demonstrating that pre-trained or lightweight 3D models can function as first-class entities within Gaussian-based rendering and composition.
 As a result, the system generalizes across input modalities, accommodating both data-driven and generative 3D sources without modifications to the rendering logic.
 
 \section{Limitations}
@@ -42,4 +42,4 @@ In parallel, coupling Gaussian-based scene representations with diffusion-based 
 Finally, establishing standardized benchmarks for evaluating compositional and temporal consistency in Gaussian-rendered datasets would be highly beneficial.
 Such benchmarks could promote reproducibility, enable quantitative analysis of temporal stability, and help define a common evaluation protocol for future research in Gaussian-based dataset generation.
 
-Overall, this work demonstrates that temporally consistent Gaussian representations—when combined with geometry-aware compositing and transparent annotation pipelines—provide a practical and extensible foundation for the next generation of large-scale, multi-view training datasets.
+Overall, this work demonstrates that temporally consistent Gaussian representations, when combined with geometry-aware compositing and transparent annotation pipelines, provide a practical and extensible foundation for the next generation of large-scale, multi-view training datasets.

@@ -185,6 +185,11 @@ Jonathon Luiten, Georgios Kopanas, Bastian Leibe, and Deva Ramanan.
 \newblock Dynamic 3d gaussians: Tracking by persistent dynamic view synthesis.
 \newblock In {\em International Conference on 3D Vision (3DV)}, 2024.
 
+\bibitem{markley2007averaging}
+F.~Landis Markley, Yang Cheng, John~L. Crassidis, and Yaakov Oshman.
+\newblock Averaging quaternions.
+\newblock {\em Journal of Guidance, Control, and Dynamics}, 30(4):1193--1197, 2007.
+
 \bibitem{max1995optical}
 Nelson Max.
 \newblock Optical models for direct volume rendering.

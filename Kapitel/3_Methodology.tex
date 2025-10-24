@@ -3,7 +3,20 @@
 This chapter presents the complete methodology developed for constructing, combining, and rendering Gaussian Splatting models for both static and dynamic 3D scenes. 
 The proposed system is designed to transform synchronized multi-view recordings into modular Gaussian representations and to recompose them into complex, synthetic environments. 
 It consists of two main processing stages: \textbf{Pipeline A}, which reconstructs 3D and 4D Gaussian models from calibrated camera data, and \textbf{Pipeline B}, which composes these models into structured multi-object scenes for dataset generation. 
-Together, these stages establish a unified framework that bridges real-world capture and synthetic data creation through differentiable Gaussian rendering.
+Together, these stages establish a unified framework that bridges real-world capture and synthetic data creation through differentiable Gaussian rendering. 
+An overview of the entire process, including both reconstruction and composition stages, is illustrated in Figure~\ref{fig:Ablauf}.
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Grafiken/Ablauf.pdf}
+    \caption{
+       \textbf{Overview of the proposed composition pipeline.}
+        \textbf{Pipeline A} converts multi-view captures into per-object 3DGS and D3DGS models via calibration, mask generation, and model training.
+        \textbf{Pipeline B} composes exported models into multi-object scenes, producing synchronized RGB, depth, segmentation, and occlusion annotations.
+    }
+    \label{fig:Ablauf}
+\end{figure*}
+
 
 \section{Pipeline A: Reconstruction of 3D and Dynamic 3D Models}
 
@@ -62,7 +75,52 @@ s_{\mathrm{occ}}(t,i) = 1 - \frac{|V_{t,i}|}{|C_{t,i}|},
 where \(V_{t,i}\) and \(C_{t,i}\) denote the pixel counts of the visible and complete masks, respectively. The score ranges from 0 (fully visible) to 1 (completely occluded). Occlusion scores are stored in the JSON manifest and can be used for filtering, sampling, or weighting during downstream training.
 
 \subsection{6D pose estimation}
-Each object is associated with a candidate six-degree-of-freedom transform mapping its canonical coordinates into the global scene frame. Static poses derive from the original reconstruction alignment, while dynamic poses are obtained from per-Gaussian trajectories via centroid and rotation estimation. Although these poses do not constitute absolute ground truth, they provide consistent internal motion estimates that are valuable for pose refinement, tracking, and activity recognition.
+For each object instance, a rigid transformation 
+$T_{\mathrm{obj}\rightarrow\mathrm{cam}} \in \mathbb{R}^{4\times4}$ 
+is estimated to map canonical object coordinates into the current camera frame. 
+The translation component is derived from the displacement of the object centroid, 
+computed either over all Gaussian means or a designated subset of anchor points:
+\begin{align}
+t &= \bar{x}_{t} - \bar{x}_{0}, \\
+\bar{x}_{t} &= \frac{1}{|\mathcal{A}|} \sum_{i \in \mathcal{A}} x_i^{(t)}.
+\end{align}
+
+Rotational change is obtained from the per-anchor quaternions 
+$q_i^{(t)} = (w,x,y,z)$ using Markley’s quaternion averaging method~\cite{markley2007averaging}. 
+A mean quaternion is computed for both the reference and current frame:
+\begin{align}
+q^{(t)}_{\mathrm{mean}} &= 
+\arg\max_{\|q\|=1} q^\top
+\left(\sum_i q_i^{(t)} q_i^{(t)\top}\right) q,
+\end{align}
+and the relative rotation is given by
+\begin{align}
+q_{\Delta} &= q^{(t)}_{\mathrm{mean}} \otimes \overline{q^{(0)}_{\mathrm{mean}}}, \\
+R_{\Delta} &= \mathrm{quat2mat}(q_{\Delta}).
+\end{align}
+
+The resulting rotation is combined with an optional initial alignment $R_0$, yielding
+\begin{align}
+R_{\mathrm{obj}} = R_{\Delta} R_0.
+\end{align}
+
+Finally, the object-to-camera transform is assembled as
+\begin{align}
+T_{\mathrm{obj}\rightarrow\mathrm{cam}} =
+\left(T_{\mathrm{w}\rightarrow\mathrm{c}}^{-1}\right)
+\begin{bmatrix}
+R_{\mathrm{obj}} & \bar{x}_{t} \\
+0 & 1
+\end{bmatrix}.
+\end{align}
+
+This transformation represents a temporally consistent 6D pose estimate 
+that captures the object’s centroid and orientation changes over time. 
+Although these poses are not absolute ground truth, 
+they provide reliable internal motion estimates that can be leveraged 
+for downstream tasks such as motion tracking, pose refinement, or activity recognition.
+
+
 
 \subsection{Keypoint detection and propagation}
 The system generates 3D keypoints for each captured dynamic human model. Keypoints for each dynamic human model are initially detected in a reference frame using a Detectron2-based detector \cite{Detectron22020}. The rasterizer was extended to return per-pixel Gaussian indices, enabling tracking of keypoints over time by associating them with the Gaussians that influence the corresponding 2D pixel locations. To ensure temporal consistency across frames, 2D keypoints are reprojected into 3D using rendered depth maps together with camera intrinsics and extrinsics. These 3D points are subsequently updated in each frame according to the motion of the associated 3D Gaussians, ensuring that keypoints follow the dynamic objects throughout the sequence.
