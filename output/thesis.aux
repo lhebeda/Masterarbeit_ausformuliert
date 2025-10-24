@@ -196,6 +196,9 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Comparison of Results in NSTL with COLMAP and OpenCV}{29}{subsection.4.1.1}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of metrics for the scene from the NSTL dataset.}}{29}{table.caption.30}\protected@file@percent }
 \newlabel{tab:3dgs_results_nstl}{{4.1}{29}{Comparison of metrics for the scene from the NSTL dataset}{table.caption.30}{}}
+\citation{yang2023gs4d}
+\citation{pumarola2021d}
+\citation{li2022neural}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Comparison between ground truth and rendered image using COLMAP camera poses: The reconstruction shows clear textures in the central region, with minor blurring near the floor and image borders.}}{30}{figure.caption.31}\protected@file@percent }
 \newlabel{fig:3dgs_COLMAP}{{4.1}{30}{Comparison between ground truth and rendered image using COLMAP camera poses: The reconstruction shows clear textures in the central region, with minor blurring near the floor and image borders}{figure.caption.31}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Ground Truth}}}{30}{subfigure.1.1}\protected@file@percent }
@@ -204,31 +207,65 @@
 \newlabel{fig:3dgs_opencv}{{4.2}{30}{Comparison between ground truth and rendered image using OpenCV calibration: The reconstruction maintains good texture fidelity in the central region, with stronger blurring near the floor and background}{figure.caption.32}{}}
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Ground Truth}}}{30}{subfigure.2.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Rendered Image}}}{30}{subfigure.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Composition Pipeline Evaluation}{31}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Compositional Scene Generation}{31}{section.4.3}\protected@file@percent }
+\citation{yang2023gs4d}
+\citation{yang2023gs4d}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}4D Gaussian Splatting}{31}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Yang et al.}{31}{subsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Method Validation with D-NeRF and DyNeRF Datasets}{31}{section*.33}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Comparison of metrics for the "Mutant" scene from the D-NeRF dataset.}}{31}{table.caption.34}\protected@file@percent }
+\newlabel{tab:mutant_metrics}{{4.2}{31}{Comparison of metrics for the "Mutant" scene from the D-NeRF dataset}{table.caption.34}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Comparison of metrics for the "cut roasted beef" scene from the DyNeRF dataset.}}{31}{table.caption.37}\protected@file@percent }
+\newlabel{tab:cut_roasted_beef_metrics}{{4.3}{31}{Comparison of metrics for the "cut roasted beef" scene from the DyNeRF dataset}{table.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Example reconstruction from a test camera: While central image elements are consistently reconstructed, the ceiling exhibits strong errors due to insufficient training data coverage.}}{32}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:DNeRFVergleich}{{4.3}{32}{Example reconstruction from a test camera: While central image elements are consistently reconstructed, the ceiling exhibits strong errors due to insufficient training data coverage}{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Example reconstruction from a test camera: During high-motion frames (top), some blurring and incomplete reconstructions occur; in low-motion frames (bottom), the reconstruction quality is high across the scene.}}{33}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:DyNeRFVergleich}{{4.4}{33}{Example reconstruction from a test camera: During high-motion frames (top), some blurring and incomplete reconstructions occur; in low-motion frames (bottom), the reconstruction quality is high across the scene}{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Results with the NSTL Dataset}{34}{section*.38}\protected@file@percent }
+\newlabel{sec:results_nstl}{{4.2.1}{34}{Results with the NSTL Dataset}{section*.38}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Comparison of metrics for the NSTL "4DGS dataset" with varying numbers of Gaussians and sequence lengths.}}{34}{table.caption.39}\protected@file@percent }
+\newlabel{tab:4dgs_metrics}{{4.4}{34}{Comparison of metrics for the NSTL "4DGS dataset" with varying numbers of Gaussians and sequence lengths}{table.caption.39}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Comparison of ground truth (left) and rendered images (right) for the 4D Tennis dataset with 50 images.}}{35}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:DyNeRFVergleich}{{4.5}{35}{Comparison of ground truth (left) and rendered images (right) for the 4D Tennis dataset with 50 images}{figure.caption.40}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Results of the Pruning Approach}{36}{section*.41}\protected@file@percent }
+\newlabel{pruning_results}{{4.2.1}{36}{Results of the Pruning Approach}{section*.41}{}}
+\@writefile{toc}{\contentsline {paragraph}{Analysis of Active Gaussians}{36}{section*.42}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Comparison of different pruning strategies: (a) proportion of active Gaussians over time, (b) distribution of $\Sigma _t$.}}{37}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:Pruning_overview}{{4.6}{37}{Comparison of different pruning strategies: (a) proportion of active Gaussians over time, (b) distribution of $\Sigma _t$}{figure.caption.44}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Comparison of metrics for the NSTL "4DGS dataset" with varying Gaussian counts and memory usage.}}{37}{table.caption.43}\protected@file@percent }
+\newlabel{tab:4dgs_metrics}{{4.5}{37}{Comparison of metrics for the NSTL "4DGS dataset" with varying Gaussian counts and memory usage}{table.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces Comparison of ground truth (left) and rendered images (right) for camera C-1-M. While background details improve with pruning, foreground regions (hands) exhibit qualitative weaknesses.}}{38}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:4dgs_prune}{{4.7}{38}{Comparison of ground truth (left) and rendered images (right) for camera C-1-M. While background details improve with pruning, foreground regions (hands) exhibit qualitative weaknesses}{figure.caption.45}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Volley Dataset}{39}{subsection.4.2.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Comparison of metrics between the original and cleaned scene.}}{39}{table.caption.46}\protected@file@percent }
+\newlabel{tab:4dgs_clean_metrics}{{4.6}{39}{Comparison of metrics between the original and cleaned scene}{table.caption.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Training with Fixed Background}{39}{subsection.4.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces placeholder}}{40}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:4DTennis50img_GtvsRender}{{4.8}{40}{placeholder}{figure.caption.47}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Composition Pipeline Evaluation}{41}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Compositional Scene Generation}{41}{section.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces  \textbf  {Compositional scene generation.} Example of multi-object scenes composed from independently reconstructed Gaussian Splatting models. Each row shows one scene configuration with RGB, depth, bounding boxes, and segmentation overlays. All semantic annotations are generated automatically and remain spatially consistent across views. }}{42}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:composition}{{4.9}{42}{\textbf {Compositional scene generation.} Example of multi-object scenes composed from independently reconstructed Gaussian Splatting models. Each row shows one scene configuration with RGB, depth, bounding boxes, and segmentation overlays. All semantic annotations are generated automatically and remain spatially consistent across views}{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Multi-view Occlusion Handling}{42}{section.4.5}\protected@file@percent }
 \citation{schoenberger2016sfm}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces  \textbf  {Compositional scene generation.} Example of multi-object scenes composed from independently reconstructed Gaussian Splatting models. Each row shows one scene configuration with RGB, depth, bounding boxes, and segmentation overlays. All semantic annotations are generated automatically and remain spatially consistent across views. }}{32}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:composition}{{4.3}{32}{\textbf {Compositional scene generation.} Example of multi-object scenes composed from independently reconstructed Gaussian Splatting models. Each row shows one scene configuration with RGB, depth, bounding boxes, and segmentation overlays. All semantic annotations are generated automatically and remain spatially consistent across views}{figure.caption.33}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Multi-view Occlusion Handling}{32}{section.4.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces  \textbf  {Occlusion handling across views.} Segmentation overlays from front and side viewpoints of two interacting subjects. Even under strong mutual occlusion, instance masks remain consistent and well aligned with visible contours. }}{32}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:occlusion}{{4.4}{32}{\textbf {Occlusion handling across views.} Segmentation overlays from front and side viewpoints of two interacting subjects. Even under strong mutual occlusion, instance masks remain consistent and well aligned with visible contours}{figure.caption.34}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Scene Generalization}{33}{section.4.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces  \textbf  {Scene generalization and recontextualization.} Dynamic subjects composited into a novel virtual environment reconstructed with COLMAP. The system maintains consistent geometry and segmentation alignment across domains, demonstrating flexible recontextualization of pre-trained Gaussian models. }}{33}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:generalization}{{4.5}{33}{\textbf {Scene generalization and recontextualization.} Dynamic subjects composited into a novel virtual environment reconstructed with COLMAP. The system maintains consistent geometry and segmentation alignment across domains, demonstrating flexible recontextualization of pre-trained Gaussian models}{figure.caption.35}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Temporal Consistency in Dynamic Scenes}{33}{section.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces  \textbf  {Occlusion handling across views.} Segmentation overlays from front and side viewpoints of two interacting subjects. Even under strong mutual occlusion, instance masks remain consistent and well aligned with visible contours. }}{43}{figure.caption.49}\protected@file@percent }
+\newlabel{fig:occlusion}{{4.10}{43}{\textbf {Occlusion handling across views.} Segmentation overlays from front and side viewpoints of two interacting subjects. Even under strong mutual occlusion, instance masks remain consistent and well aligned with visible contours}{figure.caption.49}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Scene Generalization}{43}{section.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Temporal Consistency in Dynamic Scenes}{43}{section.4.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces  \textbf  {Scene generalization and recontextualization.} Dynamic subjects composited into a novel virtual environment reconstructed with COLMAP. The system maintains consistent geometry and segmentation alignment across domains, demonstrating flexible recontextualization of pre-trained Gaussian models. }}{44}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:generalization}{{4.11}{44}{\textbf {Scene generalization and recontextualization.} Dynamic subjects composited into a novel virtual environment reconstructed with COLMAP. The system maintains consistent geometry and segmentation alignment across domains, demonstrating flexible recontextualization of pre-trained Gaussian models}{figure.caption.50}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces  \textbf  {Dynamic scene generation.} Representative time steps of a moving subject with RGB and segmentation overlays. The consistent motion and geometry across frames demonstrate temporally stable 4D rendering. }}{44}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:temporal}{{4.12}{44}{\textbf {Dynamic scene generation.} Representative time steps of a moving subject with RGB and segmentation overlays. The consistent motion and geometry across frames demonstrate temporally stable 4D rendering}{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.8}Qualitative Pose Estimation}{44}{section.4.8}\protected@file@percent }
 \citation{Detectron22020}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces  \textbf  {Dynamic scene generation.} Representative time steps of a moving subject with RGB and segmentation overlays. The consistent motion and geometry across frames demonstrate temporally stable 4D rendering. }}{34}{figure.caption.36}\protected@file@percent }
-\newlabel{fig:temporal}{{4.6}{34}{\textbf {Dynamic scene generation.} Representative time steps of a moving subject with RGB and segmentation overlays. The consistent motion and geometry across frames demonstrate temporally stable 4D rendering}{figure.caption.36}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Qualitative Pose Estimation}{34}{section.4.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.8}Keypoint Propagation}{34}{section.4.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces  \textbf  {Qualitative analysis of pose and keypoint propagation.} Four frames of a dynamic subject showing estimated object poses (top) and propagated keypoints (bottom). The coordinate systems evolve consistently over time, while keypoint trajectories remain coherent despite local misalignments. }}{35}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:keypoints}{{4.7}{35}{\textbf {Qualitative analysis of pose and keypoint propagation.} Four frames of a dynamic subject showing estimated object poses (top) and propagated keypoints (bottom). The coordinate systems evolve consistently over time, while keypoint trajectories remain coherent despite local misalignments}{figure.caption.37}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Summary and Outlook}{36}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces  \textbf  {Qualitative analysis of pose and keypoint propagation.} Four frames of a dynamic subject showing estimated object poses (top) and propagated keypoints (bottom). The coordinate systems evolve consistently over time, while keypoint trajectories remain coherent despite local misalignments. }}{45}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:keypoints}{{4.13}{45}{\textbf {Qualitative analysis of pose and keypoint propagation.} Four frames of a dynamic subject showing estimated object poses (top) and propagated keypoints (bottom). The coordinate systems evolve consistently over time, while keypoint trajectories remain coherent despite local misalignments}{figure.caption.52}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.9}Keypoint Propagation}{45}{section.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Summary and Outlook}{46}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Summary of Key Findings}{36}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Limitations}{37}{section.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Future Developments and Research Perspectives}{37}{section.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Summary of Key Findings}{46}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Limitations}{47}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Future Developments and Research Perspectives}{47}{section.5.3}\protected@file@percent }
 \bibstyle{plain}
 \bibcite{barron2021mip}{1}
 \bibcite{barron2023zipnerf}{2}
@@ -239,8 +276,8 @@
 \bibcite{denninger2019blenderproc}{7}
 \bibcite{MobileRobotsGS2024}{8}
 \bibcite{Dwibedi2017}{9}
-\@writefile{toc}{\contentsline {chapter}{References}{39}{section.5.3}\protected@file@percent }
-\newlabel{Sec:1}{{5.3}{39}{References}{section*.38}{}}
+\@writefile{toc}{\contentsline {chapter}{References}{49}{section.5.3}\protected@file@percent }
+\newlabel{Sec:1}{{5.3}{49}{References}{section*.53}{}}
 \bibcite{dwibedi2017cutpaste}{10}
 \bibcite{everingham2010pascal}{11}
 \bibcite{fridovich2023k}{12}
@@ -255,34 +292,35 @@
 \bibcite{lecun2015deep}{21}
 \bibcite{Lee2018}{22}
 \bibcite{Li2023MattingSurvey}{23}
-\bibcite{lispacetimegaussianfeaturesplattingrealtime2024}{24}
-\bibcite{lin2014microsoft}{25}
-\bibcite{Liu2018}{26}
-\bibcite{luiten2024dynamic}{27}
-\bibcite{markley2007averaging}{28}
-\bibcite{mildenhall2021nerf}{29}
-\bibcite{Niu2021}{30}
-\bibcite{pumarola2021d}{31}
-\bibcite{ravi2024sam2}{32}
-\bibcite{schoenberger2016sfm}{33}
-\bibcite{schoenberger2016mvs}{34}
-\bibcite{stearnsmarbels}{35}
-\bibcite{SyntheticDrone2023}{36}
-\bibcite{sun2017revisiting}{37}
-\bibcite{Tobin2017}{38}
-\bibcite{tobin2017domain}{39}
-\bibcite{CutAndSplat2024}{40}
-\bibcite{wu20244d}{41}
-\bibcite{Detectron22020}{42}
-\bibcite{yang2023gs4d}{43}
-\bibcite{yang2024deformable}{44}
-\bibcite{gaussian_grouping}{45}
-\bibcite{InpaintingLimitations2019}{46}
-\bibcite{yuan20251000fps4dgaussian}{47}
-\bibcite{zanjani2025gaussiansplattingeffectivedata}{48}
-\bibcite{zanjani2025gaussian}{49}
-\bibcite{SurgicalGS2023}{50}
-\bibcite{zollhoefer2018state}{51}
-\bibcite{zwicker2001ewa}{52}
-\csname bt@set@cnt\endcsname{52}
-\gdef \@abspage@last{50}
+\bibcite{li2022neural}{24}
+\bibcite{lispacetimegaussianfeaturesplattingrealtime2024}{25}
+\bibcite{lin2014microsoft}{26}
+\bibcite{Liu2018}{27}
+\bibcite{luiten2024dynamic}{28}
+\bibcite{markley2007averaging}{29}
+\bibcite{mildenhall2021nerf}{30}
+\bibcite{Niu2021}{31}
+\bibcite{pumarola2021d}{32}
+\bibcite{ravi2024sam2}{33}
+\bibcite{schoenberger2016sfm}{34}
+\bibcite{schoenberger2016mvs}{35}
+\bibcite{stearnsmarbels}{36}
+\bibcite{SyntheticDrone2023}{37}
+\bibcite{sun2017revisiting}{38}
+\bibcite{Tobin2017}{39}
+\bibcite{tobin2017domain}{40}
+\bibcite{CutAndSplat2024}{41}
+\bibcite{wu20244d}{42}
+\bibcite{Detectron22020}{43}
+\bibcite{yang2023gs4d}{44}
+\bibcite{yang2024deformable}{45}
+\bibcite{gaussian_grouping}{46}
+\bibcite{InpaintingLimitations2019}{47}
+\bibcite{yuan20251000fps4dgaussian}{48}
+\bibcite{zanjani2025gaussiansplattingeffectivedata}{49}
+\bibcite{zanjani2025gaussian}{50}
+\bibcite{SurgicalGS2023}{51}
+\bibcite{zollhoefer2018state}{52}
+\bibcite{zwicker2001ewa}{53}
+\csname bt@set@cnt\endcsname{53}
+\gdef \@abspage@last{60}

@@ -152,6 +152,18 @@ INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/tabularx.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/tabularx.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/array.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/tools/array.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/subfig/subfig.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/subfig/subfig.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/caption/subcaption.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/caption/subcaption.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/multirow/multirow.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/placeins/placeins.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/placeins/placeins.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/changepage/changepage.sty
+INPUT c:/texlive/2025/texmf-dist/tex/latex/changepage/changepage.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg
@@ -174,8 +186,6 @@ INPUT c:/texlive/2025/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 INPUT c:/texlive/2025/texmf-dist/tex/latex/microtype/microtype.cfg
 INPUT c:/texlive/2025/texmf-dist/tex/latex/microtype/microtype.cfg
 INPUT c:/texlive/2025/texmf-dist/tex/latex/microtype/microtype.cfg
-INPUT c:/texlive/2025/texmf-dist/tex/latex/subfig/subfig.sty
-INPUT c:/texlive/2025/texmf-dist/tex/latex/subfig/subfig.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 INPUT c:/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
@@ -476,6 +486,51 @@ INPUT ./bilder/Results/3dgs/3dgs_OpenCV_render.png
 INPUT ./bilder/Results/3dgs/3dgs_OpenCV_render.png
 INPUT c:/texlive/2025/texmf-dist/fonts/vf/adobe/palatino/pplr8t.vf
 INPUT c:/texlive/2025/texmf-dist/fonts/tfm/adobe/palatino/pplr8r.tfm
+INPUT ./bilder/Results/Wang/DNerf/Vergleich_DNeRF.pdf
+INPUT ./bilder/Results/Wang/DNerf/Vergleich_DNeRF.pdf
+INPUT ./bilder/Results/Wang/DNerf/Vergleich_DNeRF.pdf
+INPUT ./bilder/Results/Wang/DNerf/Vergleich_DNeRF.pdf
+INPUT ./bilder/Results/Wang/DNerf/Vergleich_DNeRF.pdf
+INPUT ./bilder/Results/Wang/DyNeRF/Vergleich_DyNeRF.pdf
+INPUT ./bilder/Results/Wang/DyNeRF/Vergleich_DyNeRF.pdf
+INPUT ./bilder/Results/Wang/DyNeRF/Vergleich_DyNeRF.pdf
+INPUT ./bilder/Results/Wang/DyNeRF/Vergleich_DyNeRF.pdf
+INPUT ./bilder/Results/Wang/DyNeRF/Vergleich_DyNeRF.pdf
+INPUT ./bilder/Results/Wang/4D Tennis/50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder/Results/Wang/4D Tennis/50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder/Results/Wang/4D Tennis/50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder/Results/Wang/4D Tennis/50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder/Results/Wang/4D Tennis/50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder//Results//Wang//Prune/Overview_Pruning.pdf
+INPUT ./bilder//Results//Wang//Prune/Overview_Pruning.pdf
+INPUT ./bilder//Results//Wang//Prune/Overview_Pruning.pdf
+INPUT ./bilder//Results//Wang//Prune/Overview_Pruning.pdf
+INPUT ./bilder//Results//Wang//Prune/Overview_Pruning.pdf
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000000.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000000.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000000.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000000.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000000.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000015.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000015.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000015.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000015.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000015.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000030.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000030.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000030.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000030.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000030.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000040.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000040.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000040.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000040.jpg
+INPUT ./bilder/Results/Wang/Prune/C-1-M_000040.jpg
+INPUT ./bilder//Results//Wang//4D Tennis//50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder//Results//Wang//4D Tennis//50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder//Results//Wang//4D Tennis//50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder//Results//Wang//4D Tennis//50img/Vergleich_Volley_50img.pdf
+INPUT ./bilder//Results//Wang//4D Tennis//50img/Vergleich_Volley_50img.pdf
 INPUT ./Grafiken/Composition.pdf
 INPUT ./Grafiken/Composition.pdf
 INPUT ./Grafiken/Composition.pdf
