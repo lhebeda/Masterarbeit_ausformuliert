@@ -1,4 +1,95 @@
+
+
 \chapter{Methodology}
+
+This chapter describes the methodology used to train, evaluate, and integrate different Gaussian Splatting representations for both static and dynamic 3D scenes. 
+The process follows a progressive structure that begins with independent model evaluation and culminates in the design of a composition pipeline for synthetic dataset generation. 
+
+In the first part, several Gaussian-based reconstruction methods are trained and compared, including static 3D Gaussian Splatting (3DGS), dynamic 3D Gaussian Splatting (D3DGS), and 4D Gaussian Splatting (4DGS). 
+Each method is evaluated on standardized datasets to assess reconstruction quality and computational efficiency. 
+The goal of this comparison is to identify the most suitable representation for large-scale compositional workflows.
+
+Based on the evaluation results, the trajectory-based D3DGS approach is selected as the primary framework for dataset construction, offering a practical balance between reconstruction fidelity, modularity, and runtime performance. 
+The second part of this chapter therefore focuses on the composition pipeline that builds upon these trained models to generate structured multi-object scenes with synchronized annotations. 
+This pipeline forms the core contribution of the work and connects real-world capture with scalable synthetic data generation.
+
+\section{Model Training}
+\label{sec:modeltraining}
+
+\subsection{Data Preparation}
+\label{sec:data_preparation}
+
+The data used for model training was captured using a custom multi-camera rig designed for synchronized high-resolution reconstruction. 
+The rig consists of 56 cameras operating at a resolution of \(1920 \times 1200\) pixels and a frame rate of 30 frames per second. 
+All cameras are connected to a shared hardware trigger that distributes a global synchronization signal, ensuring microsecond-level temporal alignment across all views.
+The cameras are arranged in a hemispherical configuration around a capture volume of approximately \(1.5 \times 1.5 \times 2.5\) meters, providing dense coverage from multiple viewpoints. 
+The geometric center of this volume defines the global coordinate origin used for all reconstructions.
+
+\subsubsection{OpenCV Calibration}
+Calibration is performed in two stages. Intrinsic parameters are estimated for each camera individually following the standard OpenCV pinhole model with five distortion coefficients \((k_1, k_2, p_1, p_2, k_3)\). The intrinsic model comprises focal length, principal point, and both radial and tangential distortion terms.
+Because the optical center \((c_x, c_y)\) of each lens is not necessarily aligned with the image center, an \emph{optimal new camera matrix} is computed using OpenCV’s rectification routines to balance field of view and minimal distortion. This step yields undistorted, rectified images that serve as input for all subsequent stages.
+Extrinsic calibration is performed once for the entire rig via a global optimization of inter-camera correspondences obtained from a moving checkerboard sequence. 
+The resulting extrinsic parameters define all cameras within a unified world coordinate frame.  
+
+\subsection{3D Gaussian Splatting}
+
+The training procedure for 3D Gaussian Splatting (3DGS) follows the general methodology introduced by Kerbl et al.~\cite{kerbl3Dgaussians}. 
+In the reference implementation, \textbf{COLMAP} is used to estimate camera poses and to generate an initial sparse point cloud for Gaussian initialization. 
+While this approach achieves accurate geometry, it requires a full Structure-from-Motion (SfM) pipeline for each scene, which adds significant preprocessing time and introduces scene-dependent variability.
+
+In this setup, the reconstruction process is based entirely on the deterministic calibration obtained from the multi-camera rig described in Section~\ref{sec:data_preparation}. 
+Since all intrinsic and extrinsic parameters are known beforehand, the training can be initialized without any external SfM reconstruction or point cloud generation. 
+This reduces computational overhead and ensures that all reconstructions share a consistent global coordinate frame, which simplifies later composition steps.
+
+To validate that this calibration is sufficient for 3DGS reconstruction, two variants of the same NSTL scene are trained and compared. 
+The first uses camera parameters derived from COLMAP, while the second uses parameters obtained directly from OpenCV. 
+This comparison serves to evaluate the effect of the calibration method on reconstruction quality and to confirm the feasibility of a fully deterministic, SfM-free workflow for static Gaussian-based scene reconstruction.
+
+
+
+\subsection{4D Gaussian Splatting}
+\label{sec:4dgs}
+
+Building upon the 3D Gaussian Splatting (3DGS) framework, 4D Gaussian Splatting (4DGS) extends the representation to include temporal variation, enabling the reconstruction of dynamic scenes that evolve over time. 
+This extension is particularly relevant for the Neural Space Time Lab (NSTL), which allows synchronized multi-view recordings with precisely aligned timestamps across all cameras. 
+By incorporating time as an additional dimension, each Gaussian is defined not only by its spatial position and appearance attributes, but also by temporal parameters that capture motion and dynamic changes.
+
+The preprocessing of the data remains largely identical to the static 3DGS workflow. 
+All captured images are undistorted and rectified using the OpenCV calibration described in Section~\ref{sec:data_preparation}, and the corresponding camera parameters are structured in a JSON-based format. 
+To account for the temporal component, each image is additionally associated with a precise timestamp, defining its position within the synchronized sequence. 
+These timestamps are crucial for integrating the NSTL recordings into a coherent spatio-temporal reconstruction, ensuring consistent alignment between spatial and temporal information.
+
+For dynamic scene modeling, the method proposed by Wang et al.~\cite{yang20244dgs} was selected due to its balance of reconstruction quality and rendering efficiency. 
+Compared to alternative dynamic Gaussian methods using 4D representations, 4DGS offers the best reconstruction quality on standard benchmark datasets with fast rendering speed important for dataset generation.
+The following sections describe the adaptations and modifications made to the original 4DGS method to accommodate the specific requirements of the NSTL data and the overall pipeline.
+Initial experiments using both synthetic and NSTL datasets confirmed that the method reproduces the performance reported in the reference paper.
+
+However, practical limitations quickly emerged when applying the method to real NSTL captures. 
+The memory footprint grows rapidly with sequence length, as a large portion of the generated Gaussians are short-lived and contribute only marginally to the overall scene representation. 
+Empirical analysis of trained NSTL models revealed that approximately 80\% of all Gaussians exhibit minimal temporal persistence, a finding consistent with the redundancy problem described by Yuan et al.~\cite{yuan20251000fps4dgaussian}. 
+This redundancy leads to inefficient GPU memory usage and restricts training to short temporal windows of only a few seconds.
+
+To mitigate this issue, a background-aware training strategy was introduced, leveraging the fixed-camera setup of the NSTL rig. 
+Since each camera captures an empty reference frame prior to the motion sequence, these static background images are directly embedded into the rendering process. 
+Pixels that are fully explained by static geometry are filled from the reference image, while Gaussians are only optimized for regions of change, such as moving subjects, shadows, or reflections. 
+This approach eliminates the number of Gaussians required for static areas almost completely and allows the available memory to be focused on dynamic content.
+
+While this modification improved efficiency and reconstruction quality, the overall complexity and high memory requirements of 4DGS still limited its scalability. 
+As a result, the focus of this work shifted toward a simplified, modular approach based on Dynamic 3D Gaussian Splatting (D3DGS), described in the following section. 
+This method retains the ability to represent motion through temporally segmented static reconstructions, while providing a significantly lighter and more flexible pipeline suitable for multi-object composition.
+
+
+\subsection{Dynamic 3D Gaussian Splatting}
+\subsection{Segmentation and Mask Generation}
+\subsubsection{Prompt Propagation with SAM2}
+\subsubsection{Spatial-Temporal Score and Pruning}
+\subsubsection{Fixed Background Training}
+\subsubsection{Training Adjustments and Limitations}
+
+
+
+\section{Composition Pipeline}
+\label{sec:compositionpipeline}
 
 This chapter presents the complete methodology developed for constructing, combining, and rendering Gaussian Splatting models for both static and dynamic 3D scenes. 
 The proposed system is designed to transform synchronized multi-view recordings into modular Gaussian representations and to recompose them into complex, synthetic environments. 
@@ -41,15 +132,52 @@ Dynamic 3D Gaussian Splatting requires per-frame object masks to disentangle dyn
 
 Segmentation is initialized by selecting a seed frame and providing manual point or box prompts for the objects of interest. These seed prompts are propagated across all cameras in the calibrated multi-view setup. Concretely, for each camera in the sequence the corresponding seed image is used to generate an initial segmentation prompt that is added to the predictor state, ensuring consistent initial object masks across views. Subsequently, masks are propagated temporally across the sequence using the SAM2 video predictor. This procedure yields temporally consistent, per-camera instance masks for all frames of the dataset. Compared to classical foreground/background segmentation, this approach permits fine-grained object delineation and is more resilient to occlusions and appearance changes across time and viewpoints. The resulting masks are fed directly into the D3DGS training pipeline to supervise dynamic object reconstruction.
 
+
+
+
 \subsection{3D / Dynamic-3D Gaussian Model Training}
 \label{sec:modeltraining}
 
-Per-object Gaussian Splatting models are trained using the rectified images, calibrated poses, and instance masks. Static instances are reconstructed with 3DGS~\cite{kerbl3Dgaussians}; dynamic instances use persistent D3DGS~\cite{luiten2024dynamic}. 
+Per-object Gaussian Splatting models are trained using the rectified images, calibrated poses, and instance masks. 
+Static instances are reconstructed with 3DGS~\cite{kerbl3Dgaussians}; dynamic instances use persistent D3DGS~\cite{luiten2024dynamic}. 
+The training procedure follows the original methods with two notable deviations. First, Gaussian positions are not initialized from sparse COLMAP point clouds. Because the multi-camera rig is pre-calibrated with known intrinsics and extrinsics, no additional SfM reconstruction is required. Instead, random point clouds are used to initialize each scene, reducing overhead for new sequences. Second, all reconstructions share a common global coordinate system, enabling direct merging of models from separate sequences without extra calibration.
 
-The training procedure follows the original methods with two notable deviations. First, Gaussian positions are not initialized from sparse COLMAP point clouds. Because the multi-camera rig is pre-calibrated with known intrinsics and extrinsics, no additional SfM reconstruction is required for each scene. Instead, random point clouds are used to initialize each scene, significantly reducing overhead when training new sequences. Second, all reconstructions share a common global coordinate system, guaranteeing consistent alignment across different captures. Consequently, models trained in separate sequences can be merged directly without additional markers, manual registration, or extra calibration steps.
+\subsubsection{3D Gaussian Splatting (3DGS)}
+To validate the 3DGS method, we first reproduced results from the Mip-NeRF 360 "bicycle" dataset \cite{barron2021mip}. Both COLMAP-based initialization and OpenCV-based calibration were tested to evaluate their impact on reconstruction quality and performance.
 
-\paragraph{External 3D assets.}
-In addition to models reconstructed with 3DGS and D3DGS, Pipeline A can incorporate externally generated 3D assets. To demonstrate this, small object models produced with \textbf{Trellis}~\cite{xiang2024structured} are used; Trellis reconstructs compact GLB meshes from a few input images and can export models as Gaussian representations. Exported Gaussian assets are imported without modification into the composition framework, demonstrating compatibility with heterogeneous 3D sources such as small household objects (e.g., boxes, plants, or tools).
+COLMAP preprocessing generates sparse point clouds for initialization, while OpenCV uses deterministic calibration with known intrinsic and extrinsic parameters of the NSTL cameras. 
+This ensures a global coordinate system in real-world units (meters), enabling precise spatial alignment across different sequences.
+
+\paragraph{Key observations.} 
+OpenCV-based calibration provides higher consistency in multi-camera setups and eliminates the need for scene-specific SfM, making it preferable for NSTL applications. Differences in reconstruction metrics (PSNR, SSIM, LPIPS) were minor within the region of interest.
+
+\subsubsection{Dynamic 3D / 4D Gaussian Splatting (D3DGS)}
+Dynamic instances are trained using temporally consistent per-camera masks derived from the SAM2-based pipeline (see Section~\ref{sec:maskgen}). 
+Initial validation was performed on NSTL datasets, e.g., a Tennis-Volley sequence of 50 frames, to evaluate reconstruction quality with varying numbers of Gaussians.
+
+\paragraph{Spatial-Temporal Score and Pruning.} 
+To optimize memory usage, a Spatial-Temporal Score was computed for each Gaussian to identify short-lived or low-contribution Gaussians. Pruning was tested both after densification and during training to improve efficiency while maintaining visual fidelity. (Mathematical details and derivations are provided in Appendix~\ref{appendix:spatial_temporal_score}.)
+
+\paragraph{Fixed Background Training.} 
+Using pre-captured background images for each camera, the static scene was embedded directly, allowing Gaussians to focus on dynamic objects. 
+This reduced VRAM usage and enabled more accurate modeling of motion, particularly for fast-moving regions like hands and rackets. 
+The method involves replacing the standard background fill in the rasterizer with the corresponding reference image pixel values.
+
+\paragraph{Training adjustments.} 
+Additional modifications included fixing camera color and contrast parameters (\texttt{cam\_c} and \texttt{cam\_m}) and disabling the Floor-Loss, which was unsuitable for the NSTL’s slanted room coordinate system. These changes stabilized training and improved color fidelity.
+
+\subsubsection{External 3D Assets}
+Pipeline A also supports the integration of external 3D assets. Small object models produced with Trellis~\cite{xiang2024structured} can be exported as Gaussian representations and imported without modification. 
+This allows heterogeneous scene composition with small household objects (e.g., boxes, plants, or tools) alongside reconstructed models.
+
+\paragraph{Summary.} 
+Together, these training strategies enable the generation of modular Gaussian models suitable for both static and dynamic scenes. 
+Validation on benchmark and NSTL datasets confirmed that the reconstructed models are consistent, temporally coherent, and ready for downstream composition and rendering in Pipeline B (see Section~\ref{sec:pipelineB}).
+
+
+
+
+
 
 \section{Pipeline B: Composition and Synthetic Dataset Generation}
 

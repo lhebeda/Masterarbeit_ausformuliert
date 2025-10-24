@@ -14,7 +14,7 @@ Such methods illustrate that Gaussian-based representations can serve as a unifi
 \section{Dynamic Extensions of Gaussian Splatting}
 
 Following the success of static 3D Gaussian Splatting (3DGS), a substantial body of work has extended the approach to dynamic scenes. 
-Two main paradigms have emerged.
+Two main paradigms for dynamic extensions have emerged.
 
 The first models temporal evolution explicitly by tracking Gaussian primitives over time. 
 Each Gaussian is associated with a trajectory describing its spatial and appearance changes, enabling temporal coherence without retraining. 
@@ -27,7 +27,10 @@ Representative approaches include \textit{4DGS}~\cite{yang2023gs4d}, \textit{Spa
 These methods achieve globally consistent reconstructions across time but at the cost of increased computational demand and reduced flexibility. 
 Once trained, 4DGS models are monolithic and difficult to segment, edit, or recombine, making them less suited for object-centric workflows or dataset generation.
 
-From the perspective of dataset generation, the trajectory-based approach offers better modularity and reusability. It allows reconstructed objects to be relocated, duplicated, or combined across scenes, which is essential for large-scale synthetic data pipelines. Although four-dimensional representations achieve elegant temporal consistency, their high computational cost and limited flexibility make them less practical for compositional workflows. For this reason, the pipeline developed in this work adopts a trajectory-based dynamic formulation that balances temporal coherence with scalability and per-object control.
+
+The two dynamic paradigms, trajectory-based and 4D representations, offer complementary trade-offs. Trajectory-based methods, exemplified by D3DGS~\cite{luiten2024dynamic}, prioritize modularity, interpretability, and flexibility, making them well-suited for compositional workflows and synthetic dataset generation. In contrast, 4DGS~\cite{yang2023gs4d} provides globally consistent temporal reconstruction at higher computational cost but with reduced object-level control.  
+From the perspective of dataset generation, the trajectory-based approach offers better modularity and reusability. It allows reconstructed objects to be relocated, duplicated, or combined across scenes, which is essential for large-scale synthetic data pipelines. Although four-dimensional representations achieve elegant temporal consistency, their high computational cost and limited flexibility make them less practical for compositional workflows. For this reason, the pipeline developed in this work adopts a trajectory-based dynamic formulation that balances temporal coherence with scalability and per-object control. Methods using 4D Gaussian Splatting are also evaluated as a benchmark for comparison.
+
 
 \section{Synthetic Compositing and Dataset Pipelines}
 
@@ -39,7 +42,7 @@ More recent efforts combine learned 3D object models with image-based rendering 
 
 However, many compositing pipelines still rely on 2D-level heuristics such as monocular depth estimation or per-frame segmentation, which introduce inconsistencies across viewpoints and over time~\cite{InpaintingLimitations2019,MonoDepthLimitations2018}. 
 Promptable segmentation frameworks like SAM~\cite{Kirillov2023} have improved mask quality, but their integration into geometry-aware, multi-view pipelines remains limited~\cite{MaskPropagation2019}. 
-Using explicit 3D representations—such as object-level Gaussian models—can mitigate these issues by preserving intrinsic spatial consistency and enabling deterministic occlusion reasoning across views.
+Using explicit 3D representations, such as object-level Gaussian models, can mitigate these issues by preserving spatial consistency and enabling deterministic reasoning about what is obscured in different views.
 
 Beyond masks and depth, many dataset pipelines incorporate mid-level cues such as 2D keypoints to provide additional semantic structure. 
 Modern detectors based on Mask R-CNN and Detectron2 architectures~\cite{He2017MaskRCNN,Detectron22020} produce accurate joint locations but remain frame-dependent, often suffering from temporal jitter or occlusion failures. 
@@ -57,6 +60,109 @@ However, existing pipelines often focus on specific applications and lack a gene
 The work presented in this thesis addresses this gap by providing a modular and reproducible framework that integrates static and dynamic Gaussian models into coherent multi-view environments with synchronized multimodal annotations.
 
 
+
+
+\section{Detailed Review of Prominent Dynamic GS Methods}
+
+As previously mentioned, the two main paradigms of dynamic Gaussian splatting offer complementary benefits and trade-offs. The two most prominent methods, Dynamic 3D Gaussian Splatting (D3DGS) ~\cite{luiten2024dynamic} and 4D Gaussian Splatting (4DGS) ~\cite{yang2023gs4d}, are reviewed in detail below to illustrate their underlying principles and differences.
+
+
+
+\subsection{Real-time Photorealistic Dynamic Scene Representation and Rendering with 4D Gaussian Splatting}
+\label{sec:Real-Time4dgs}
+
+One of the pioneering extensions of 3D Gaussian Splatting to dynamic scenes is the approach by Yang et al.~\cite{yang2023gs4d}. 
+This method aims to model the underlying 4D space using 4D Gaussians, treating space and time as a unified construct. 
+The complete rendering pipeline is illustrated in Figure~\ref{fig:pipeline_real_time_4D} and explained step by step in the following sections.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{Grafiken/Fundamentals/pipeline_yang.pdf}
+    \caption{The rendering pipeline of the proposed 4DGS method. For a given time \(t\) and view \(I\), each 4D Gaussian is decomposed into a conditional 3D Gaussian and a marginal 1D Gaussian. The conditional 3D Gaussian is then projected onto a 2D splat. Finally, the planar conditional Gaussian, the 1D marginal Gaussian, and the temporally varying, view-dependent color are combined to render the view \(I\) (figure adapted from \cite{yang2023gs4d}).}
+    \label{fig:pipeline_real_time_4D}
+\end{figure*}
+
+\subsubsection{Extension of the Rendering Equation}
+
+For dynamic scenes, indexing pixels solely by their spatial coordinates \((u,v)\) is insufficient. 
+Yang et al.~extend Equation~\ref{eq:projection_3D_gaussians} by an additional timestamp \(t\) to capture the scene dynamics.  
+The color \(I(u,v,t)\) of a pixel at time \(t\) is computed by alpha-blending the visible 4D Gaussians:
+
+\begin{align}
+I(u,v,t) &= \sum_{i=1}^N p_i(u,v,t) \alpha_i c_i(d) \prod_{j=1}^{i-1} (1 - p_j(u,v,t) \alpha_j)
+\end{align}
+
+Here, \(p_i(u,v,t)\) can be further factorized into a conditional probability \(p_i(u,v|t)\) and a marginal probability \(p_i(t)\):
+
+\begin{align}
+I(u,v,t) &= \sum_{i=1}^N p_i(t) p_i(u,v|t) \alpha_i c_i(d) \prod_{j=1}^{i-1} (1 - p_j(t) p_j(u,v|t) \alpha_j)
+\end{align}
+
+\subsubsection{Scene Representation with 4D Gaussians}
+
+A 4D Gaussian is described by a mean vector \(\mu = (\mu_x, \mu_y, \mu_z, \mu_t)\). 
+The definition of the covariance matrix \(\Sigma\) remains identical to the 3DGS formulation~\cite{kerbl3Dgaussians}, factorized via a scaling matrix \(S\) and a rotation matrix \(R\) (cf. Equation~\ref{eq:calc_sigma}).  
+
+The scaling matrix is extended with a temporal scaling factor along the diagonal, resulting in \(S = \mathrm{diag}(s_x, s_y, s_z, s_t)\). 
+A rotation in 4D Euclidean space can be constructed from two isotropic rotations, both representable as quaternions. 
+This allows anisotropic ellipsoids to rotate freely in space and time.
+
+The left isotropic rotation \(L(q_l)\) and right isotropic rotation \(R(q_r)\) are defined as:
+
+\begin{equation}
+R = L(q_l) R(q_r) = 
+\begin{pmatrix} 
+a & -b & -c & -d \\ 
+b & a & -d & c \\
+c & d & a & -b \\
+d & -c & b & a
+\end{pmatrix} 
+\begin{pmatrix}
+p & -q & -r & -s \\ 
+q & p & s & -r \\ 
+r & -s & p & q \\ 
+s & r & -q & p
+\end{pmatrix}.
+\label{eq:rotation_matrix}
+\end{equation}
+
+\subsubsection{Projection onto the Image Plane}
+
+The conditional 3D Gaussian at a specific time \(p_i(x,y,z|t)\) can now be derived from the properties of the 4D Gaussian:
+
+\begin{align}
+\mu_{xyz|t} &= \mu_{1:3} + \Sigma_{1:3,4} \Sigma_{4,4}^{-1} (t - \mu_t) \\
+\Sigma_{xyz|t} &= \Sigma_{1:3,1:3} - \Sigma_{1:3,4} \Sigma_{4,4}^{-1} \Sigma_{4,1:3}
+\end{align}
+
+After extracting the conditional 3D Gaussians from the 4D representation, the 2D projection can be computed in the same way as for 3DGS.
+
+The marginal distribution \(p_i(t)\) indicates at which times a Gaussian contributes to the scene. 
+It can be described by a 1D Gaussian:
+
+\begin{align}
+p_i(t) &= \mathcal{N}(t; \mu_4, \Sigma_{4,4})
+\end{align}
+
+\subsubsection{Spherical Harmonics for Color Representation}
+
+To model temporal evolution and view-dependent color, spherical harmonics are employed. 
+These extend conventional spherical harmonics to account for the temporal dimension. 
+The color is represented as a combination of 4D spherical harmonics:
+
+\[
+Z_{nlm}(t, \theta, \phi) = \cos\left(\frac{2\pi n}{T} t\right) Y_l^m(\theta, \phi),
+\]
+
+where \(Y_l^m\) are the 3D spherical harmonics, \(l\) the degree, \(m\) the order, and \(n\) the Fourier order. 
+This enables modeling of temporally varying, view-dependent colors.
+
+% \subsubsection{Evaluation of the Method}
+
+% Compared to previous works, the approach by Yang et al.~\cite{yang2023gs4d} represents a significant advancement, as it enables a consistent representation of dynamic scenes in the space-time continuum while achieving real-time performance. 
+% The integration of 4D Gaussians allows for more accurate modeling of temporal dependencies than methods relying solely on 3D representations. 
+% However, the original work also highlights limitations: in particular, the increased memory footprint and optimization complexity remain open challenges. 
+% Despite these limitations, the method is currently considered a promising approach for photorealistic rendering of dynamic scenes.
 
 
 
