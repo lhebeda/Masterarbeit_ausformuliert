@@ -57,15 +57,16 @@
 \contentsline {subsection}{\numberline {3.4.7}Rendered outputs and metadata}{28}{subsection.3.4.7}%
 \contentsline {chapter}{\numberline {4}Results}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Model Evaluation}{29}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Composition Pipeline Evaluation}{29}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Compositional Scene Generation}{29}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Multi-view Occlusion Handling}{30}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Scene Generalization}{31}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Temporal Consistency in Dynamic Scenes}{31}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Qualitative Pose Estimation}{32}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Keypoint Propagation}{33}{section.4.8}%
-\contentsline {chapter}{\numberline {5}Summary and Outlook}{34}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Summary of Key Findings}{34}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Limitations}{35}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Future Developments and Research Perspectives}{35}{section.5.3}%
-\contentsline {chapter}{References}{37}{section.5.3}%
+\contentsline {subsection}{\numberline {4.1.1}Comparison of Results in NSTL with COLMAP and OpenCV}{29}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Composition Pipeline Evaluation}{31}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Compositional Scene Generation}{31}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Multi-view Occlusion Handling}{32}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Scene Generalization}{33}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Temporal Consistency in Dynamic Scenes}{33}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Qualitative Pose Estimation}{34}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Keypoint Propagation}{34}{section.4.8}%
+\contentsline {chapter}{\numberline {5}Summary and Outlook}{36}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Summary of Key Findings}{36}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Limitations}{37}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Future Developments and Research Perspectives}{37}{section.5.3}%
+\contentsline {chapter}{References}{39}{section.5.3}%

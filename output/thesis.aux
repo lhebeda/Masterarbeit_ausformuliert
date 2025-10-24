@@ -193,31 +193,42 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Model Evaluation}{29}{section.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Composition Pipeline Evaluation}{29}{section.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Compositional Scene Generation}{29}{section.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces  \textbf  {Compositional scene generation.} Example of multi-object scenes composed from independently reconstructed Gaussian Splatting models. Each row shows one scene configuration with RGB, depth, bounding boxes, and segmentation overlays. All semantic annotations are generated automatically and remain spatially consistent across views. }}{30}{figure.caption.30}\protected@file@percent }
-\newlabel{fig:composition}{{4.1}{30}{\textbf {Compositional scene generation.} Example of multi-object scenes composed from independently reconstructed Gaussian Splatting models. Each row shows one scene configuration with RGB, depth, bounding boxes, and segmentation overlays. All semantic annotations are generated automatically and remain spatially consistent across views}{figure.caption.30}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Multi-view Occlusion Handling}{30}{section.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Comparison of Results in NSTL with COLMAP and OpenCV}{29}{subsection.4.1.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of metrics for the scene from the NSTL dataset.}}{29}{table.caption.30}\protected@file@percent }
+\newlabel{tab:3dgs_results_nstl}{{4.1}{29}{Comparison of metrics for the scene from the NSTL dataset}{table.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Comparison between ground truth and rendered image using COLMAP camera poses: The reconstruction shows clear textures in the central region, with minor blurring near the floor and image borders.}}{30}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:3dgs_COLMAP}{{4.1}{30}{Comparison between ground truth and rendered image using COLMAP camera poses: The reconstruction shows clear textures in the central region, with minor blurring near the floor and image borders}{figure.caption.31}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Ground Truth}}}{30}{subfigure.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Rendered Image}}}{30}{subfigure.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Comparison between ground truth and rendered image using OpenCV calibration: The reconstruction maintains good texture fidelity in the central region, with stronger blurring near the floor and background.}}{30}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:3dgs_opencv}{{4.2}{30}{Comparison between ground truth and rendered image using OpenCV calibration: The reconstruction maintains good texture fidelity in the central region, with stronger blurring near the floor and background}{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Ground Truth}}}{30}{subfigure.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Rendered Image}}}{30}{subfigure.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Composition Pipeline Evaluation}{31}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Compositional Scene Generation}{31}{section.4.3}\protected@file@percent }
 \citation{schoenberger2016sfm}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces  \textbf  {Occlusion handling across views.} Segmentation overlays from front and side viewpoints of two interacting subjects. Even under strong mutual occlusion, instance masks remain consistent and well aligned with visible contours. }}{31}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:occlusion}{{4.2}{31}{\textbf {Occlusion handling across views.} Segmentation overlays from front and side viewpoints of two interacting subjects. Even under strong mutual occlusion, instance masks remain consistent and well aligned with visible contours}{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Scene Generalization}{31}{section.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Temporal Consistency in Dynamic Scenes}{31}{section.4.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces  \textbf  {Scene generalization and recontextualization.} Dynamic subjects composited into a novel virtual environment reconstructed with COLMAP. The system maintains consistent geometry and segmentation alignment across domains, demonstrating flexible recontextualization of pre-trained Gaussian models. }}{32}{figure.caption.32}\protected@file@percent }
-\newlabel{fig:generalization}{{4.3}{32}{\textbf {Scene generalization and recontextualization.} Dynamic subjects composited into a novel virtual environment reconstructed with COLMAP. The system maintains consistent geometry and segmentation alignment across domains, demonstrating flexible recontextualization of pre-trained Gaussian models}{figure.caption.32}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces  \textbf  {Dynamic scene generation.} Representative time steps of a moving subject with RGB and segmentation overlays. The consistent motion and geometry across frames demonstrate temporally stable 4D rendering. }}{32}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:temporal}{{4.4}{32}{\textbf {Dynamic scene generation.} Representative time steps of a moving subject with RGB and segmentation overlays. The consistent motion and geometry across frames demonstrate temporally stable 4D rendering}{figure.caption.33}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.7}Qualitative Pose Estimation}{32}{section.4.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces  \textbf  {Compositional scene generation.} Example of multi-object scenes composed from independently reconstructed Gaussian Splatting models. Each row shows one scene configuration with RGB, depth, bounding boxes, and segmentation overlays. All semantic annotations are generated automatically and remain spatially consistent across views. }}{32}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:composition}{{4.3}{32}{\textbf {Compositional scene generation.} Example of multi-object scenes composed from independently reconstructed Gaussian Splatting models. Each row shows one scene configuration with RGB, depth, bounding boxes, and segmentation overlays. All semantic annotations are generated automatically and remain spatially consistent across views}{figure.caption.33}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Multi-view Occlusion Handling}{32}{section.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces  \textbf  {Occlusion handling across views.} Segmentation overlays from front and side viewpoints of two interacting subjects. Even under strong mutual occlusion, instance masks remain consistent and well aligned with visible contours. }}{32}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:occlusion}{{4.4}{32}{\textbf {Occlusion handling across views.} Segmentation overlays from front and side viewpoints of two interacting subjects. Even under strong mutual occlusion, instance masks remain consistent and well aligned with visible contours}{figure.caption.34}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Scene Generalization}{33}{section.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces  \textbf  {Scene generalization and recontextualization.} Dynamic subjects composited into a novel virtual environment reconstructed with COLMAP. The system maintains consistent geometry and segmentation alignment across domains, demonstrating flexible recontextualization of pre-trained Gaussian models. }}{33}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:generalization}{{4.5}{33}{\textbf {Scene generalization and recontextualization.} Dynamic subjects composited into a novel virtual environment reconstructed with COLMAP. The system maintains consistent geometry and segmentation alignment across domains, demonstrating flexible recontextualization of pre-trained Gaussian models}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Temporal Consistency in Dynamic Scenes}{33}{section.4.6}\protected@file@percent }
 \citation{Detectron22020}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces  \textbf  {Qualitative analysis of pose and keypoint propagation.} Four frames of a dynamic subject showing estimated object poses (top) and propagated keypoints (bottom). The coordinate systems evolve consistently over time, while keypoint trajectories remain coherent despite local misalignments. }}{33}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:keypoints}{{4.5}{33}{\textbf {Qualitative analysis of pose and keypoint propagation.} Four frames of a dynamic subject showing estimated object poses (top) and propagated keypoints (bottom). The coordinate systems evolve consistently over time, while keypoint trajectories remain coherent despite local misalignments}{figure.caption.34}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.8}Keypoint Propagation}{33}{section.4.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Summary and Outlook}{34}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces  \textbf  {Dynamic scene generation.} Representative time steps of a moving subject with RGB and segmentation overlays. The consistent motion and geometry across frames demonstrate temporally stable 4D rendering. }}{34}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:temporal}{{4.6}{34}{\textbf {Dynamic scene generation.} Representative time steps of a moving subject with RGB and segmentation overlays. The consistent motion and geometry across frames demonstrate temporally stable 4D rendering}{figure.caption.36}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Qualitative Pose Estimation}{34}{section.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.8}Keypoint Propagation}{34}{section.4.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces  \textbf  {Qualitative analysis of pose and keypoint propagation.} Four frames of a dynamic subject showing estimated object poses (top) and propagated keypoints (bottom). The coordinate systems evolve consistently over time, while keypoint trajectories remain coherent despite local misalignments. }}{35}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:keypoints}{{4.7}{35}{\textbf {Qualitative analysis of pose and keypoint propagation.} Four frames of a dynamic subject showing estimated object poses (top) and propagated keypoints (bottom). The coordinate systems evolve consistently over time, while keypoint trajectories remain coherent despite local misalignments}{figure.caption.37}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Summary and Outlook}{36}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}Summary of Key Findings}{34}{section.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Limitations}{35}{section.5.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}Future Developments and Research Perspectives}{35}{section.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Summary of Key Findings}{36}{section.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Limitations}{37}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}Future Developments and Research Perspectives}{37}{section.5.3}\protected@file@percent }
 \bibstyle{plain}
 \bibcite{barron2021mip}{1}
 \bibcite{barron2023zipnerf}{2}
@@ -228,8 +239,8 @@
 \bibcite{denninger2019blenderproc}{7}
 \bibcite{MobileRobotsGS2024}{8}
 \bibcite{Dwibedi2017}{9}
-\@writefile{toc}{\contentsline {chapter}{References}{37}{section.5.3}\protected@file@percent }
-\newlabel{Sec:1}{{5.3}{37}{References}{section*.35}{}}
+\@writefile{toc}{\contentsline {chapter}{References}{39}{section.5.3}\protected@file@percent }
+\newlabel{Sec:1}{{5.3}{39}{References}{section*.38}{}}
 \bibcite{dwibedi2017cutpaste}{10}
 \bibcite{everingham2010pascal}{11}
 \bibcite{fridovich2023k}{12}
@@ -274,4 +285,4 @@
 \bibcite{zollhoefer2018state}{51}
 \bibcite{zwicker2001ewa}{52}
 \csname bt@set@cnt\endcsname{52}
-\gdef \@abspage@last{48}
+\gdef \@abspage@last{50}

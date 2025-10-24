@@ -4,7 +4,66 @@
 \section{Model Evaluation}
 
 
-all bad
+\subsection{Comparison of Results in NSTL with COLMAP and OpenCV}
+
+To validate the 3D Gaussian Splatting method in the Neural Space Time Lab (NSTL), a new dataset was captured and prepared using two different calibration approaches: COLMAP and OpenCV. 
+The scene was trained, rendered, and evaluated using SSIM, PSNR, and LPIPS metrics to assess the impact of the calibration method on reconstruction quality, as described in the methodology section (Chapter~\ref{chap:Methodik}).
+
+The results are summarized in Table~\ref{tab:3dgs_results_nstl}. 
+Both calibration methods achieve high reconstruction quality, with COLMAP showing slightly better metric values. 
+The differences can be attributed to the optimized estimation of camera poses through the structure-from-motion (SfM) procedure.
+
+\begin{table}[h]
+\centering
+\caption{Comparison of metrics for the scene from the NSTL dataset.}
+\label{tab:3dgs_results_nstl}
+\begin{tabular}{lccc}
+\toprule
+& SSIM $\uparrow$ & PSNR (dB) $\uparrow$ & LPIPS $\downarrow$\\
+\midrule
+COLMAP & 0.931 & 35.58 & 0.18 \\
+OpenCV & 0.927 & 34.56 & 0.252\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:3dgs_COLMAP} shows a visual comparison for the COLMAP-based reconstruction. 
+The rendered image closely resembles the ground truth, with clear textures and edges in the central region, while slight blurring is visible near the floor and image borders.
+
+Figure~\ref{fig:3dgs_opencv} presents the OpenCV-based reconstruction. 
+Texture fidelity in the central region remains high, but quality decreases more noticeably toward the edges, particularly at the floor and in background elements such as a ladder.
+
+\begin{figure}[h]
+    \centering
+    \subfloat[Ground Truth]{%
+        \includegraphics[width=0.48\linewidth]{bilder/Results/3dgs/3dgs_COLMAP_gt.jpg}%
+    }
+    \hfill
+    \subfloat[Rendered Image]{%
+        \includegraphics[width=0.48\linewidth]{bilder/Results/3dgs/3dgs_COLMAP_render.jpg}%
+    }
+    \caption{Comparison between ground truth and rendered image using COLMAP camera poses: The reconstruction shows clear textures in the central region, with minor blurring near the floor and image borders.}
+    \label{fig:3dgs_COLMAP}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \subfloat[Ground Truth]{%
+        \includegraphics[width=0.48\linewidth]{bilder/Results/3dgs/3dgs_OpenCV_gt.png}%
+    }
+    \hfill
+    \subfloat[Rendered Image]{%
+        \includegraphics[width=0.48\linewidth]{bilder/Results/3dgs/3dgs_OpenCV_render.png}%
+    }
+    \caption{Comparison between ground truth and rendered image using OpenCV calibration: The reconstruction maintains good texture fidelity in the central region, with stronger blurring near the floor and background.}
+    \label{fig:3dgs_opencv}
+\end{figure}
+
+Despite the slightly better metrics of COLMAP, OpenCV is preferred for NSTL applications, as explained in the methodology section (Chapter~\ref{chap:Methodik}). 
+Deterministic calibration with OpenCV provides a coordinate system in real-world units, ensuring precise and reproducible spatial positioning. 
+This is crucial for integration with other NSTL systems and for future extensions to dynamic scenes using 4D Gaussian Splatting. 
+The similar reconstruction quality in the central region demonstrates that OpenCV, despite slightly lower metrics, is a robust alternative due to its consistency and lower dependence on scene-specific optimizations. 
+These results provide a solid foundation for the investigation of dynamic scenes in the following sections.
 
 
 
