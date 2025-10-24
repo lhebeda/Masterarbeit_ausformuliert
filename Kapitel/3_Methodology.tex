@@ -80,11 +80,30 @@ This method retains the ability to represent motion through temporally segmented
 
 
 \subsection{Dynamic 3D Gaussian Splatting}
-\subsection{Segmentation and Mask Generation}
-\subsubsection{Prompt Propagation with SAM2}
-\subsubsection{Spatial-Temporal Score and Pruning}
-\subsubsection{Fixed Background Training}
-\subsubsection{Training Adjustments and Limitations}
+\label{sec:method_dynamic3d}
+
+While 4DGS provides a unified spatio-temporal representation, its high memory consumption and complexity limit its practicality for large-scale dataset generation.
+As an alternative, Dynamic 3D Gaussian Splatting (D3DGS)~\cite{luiten2024dynamic} offers a trajectory-based approach that models dynamic scenes as sequences of static 3DGS reconstructions.
+The methods uses a fixed number of Gaussians that are tracked over time, allowing each Gaussian to move and change appearance according to learned trajectories.
+This allows for efficient representation of motion while maintaining the modularity and interpretability of static Gaussian models, which is particularly advantageous for compositional workflows.
+
+\subsubsection{Dataset Preparation and Mask Generation}
+
+Dynamic 3D Gaussian Splatting requires a very similar structure to 4DGS for dataloading.
+However it requires per-frame object masks to disentangle dynamic objects from the static background and to maintain temporal consistency during training \cite{luiten2024dynamic}. While the reference implementation primarily relies on binary foreground/background masks, this pipeline extends that step by integrating \textbf{SAM2} \cite{ravi2024sam2}, enabling interactive prompting and high-quality instance segmentation across frames.
+
+Segmentation is initialized by selecting a seed frame and providing manual point or box prompts for the objects of interest. These seed prompts are propagated across all cameras in the calibrated multi-view setup. Concretely, for each camera in the sequence the corresponding seed image is used to generate an initial segmentation prompt that is added to the predictor state, ensuring consistent initial object masks across views. Subsequently, masks are propagated temporally across the sequence using the SAM2 video predictor. This procedure yields temporally consistent, per-camera instance masks for all frames of the dataset. Compared to classical foreground/background segmentation, this approach permits fine-grained object delineation and is more resilient to occlusions and appearance changes across time and viewpoints. The resulting masks are fed directly into the D3DGS training pipeline to supervise dynamic object reconstruction.
+
+
+\subsubsection{Training Adjustments}
+
+Training largely follows the original D3DGS methodology, with minor adaptations for the NSTL environment. 
+Parameters controlling brightness and contrast of rendered images were fixed to improve color consistency, and the floor-loss term was disabled as it induced artifacts in early experiments.
+All other hyperparameters and loss functions were retained as in the reference implementation.
+
+The use of SAM2 masks ensures that Gaussians are primarily optimized for dynamic objects, while the static background is implicitly handled by the consistent camera setup and training procedure. 
+This reduces memory usage and allows the model to focus its capacity on regions of interest, improving reconstruction quality for moving elements in the scene.
+
 
 
 
@@ -131,52 +150,6 @@ The resulting extrinsic parameters define all cameras within a unified world coo
 Dynamic 3D Gaussian Splatting requires per-frame object masks to disentangle dynamic objects from the static background and to maintain temporal consistency during training \cite{luiten2024dynamic}. While the reference implementation primarily relies on binary foreground/background masks, this pipeline extends that step by integrating \textbf{SAM2} \cite{ravi2024sam2}, enabling interactive prompting and high-quality instance segmentation across frames.
 
 Segmentation is initialized by selecting a seed frame and providing manual point or box prompts for the objects of interest. These seed prompts are propagated across all cameras in the calibrated multi-view setup. Concretely, for each camera in the sequence the corresponding seed image is used to generate an initial segmentation prompt that is added to the predictor state, ensuring consistent initial object masks across views. Subsequently, masks are propagated temporally across the sequence using the SAM2 video predictor. This procedure yields temporally consistent, per-camera instance masks for all frames of the dataset. Compared to classical foreground/background segmentation, this approach permits fine-grained object delineation and is more resilient to occlusions and appearance changes across time and viewpoints. The resulting masks are fed directly into the D3DGS training pipeline to supervise dynamic object reconstruction.
-
-
-
-
-\subsection{3D / Dynamic-3D Gaussian Model Training}
-\label{sec:modeltraining}
-
-Per-object Gaussian Splatting models are trained using the rectified images, calibrated poses, and instance masks. 
-Static instances are reconstructed with 3DGS~\cite{kerbl3Dgaussians}; dynamic instances use persistent D3DGS~\cite{luiten2024dynamic}. 
-The training procedure follows the original methods with two notable deviations. First, Gaussian positions are not initialized from sparse COLMAP point clouds. Because the multi-camera rig is pre-calibrated with known intrinsics and extrinsics, no additional SfM reconstruction is required. Instead, random point clouds are used to initialize each scene, reducing overhead for new sequences. Second, all reconstructions share a common global coordinate system, enabling direct merging of models from separate sequences without extra calibration.
-
-\subsubsection{3D Gaussian Splatting (3DGS)}
-To validate the 3DGS method, we first reproduced results from the Mip-NeRF 360 "bicycle" dataset \cite{barron2021mip}. Both COLMAP-based initialization and OpenCV-based calibration were tested to evaluate their impact on reconstruction quality and performance.
-
-COLMAP preprocessing generates sparse point clouds for initialization, while OpenCV uses deterministic calibration with known intrinsic and extrinsic parameters of the NSTL cameras. 
-This ensures a global coordinate system in real-world units (meters), enabling precise spatial alignment across different sequences.
-
-\paragraph{Key observations.} 
-OpenCV-based calibration provides higher consistency in multi-camera setups and eliminates the need for scene-specific SfM, making it preferable for NSTL applications. Differences in reconstruction metrics (PSNR, SSIM, LPIPS) were minor within the region of interest.
-
-\subsubsection{Dynamic 3D / 4D Gaussian Splatting (D3DGS)}
-Dynamic instances are trained using temporally consistent per-camera masks derived from the SAM2-based pipeline (see Section~\ref{sec:maskgen}). 
-Initial validation was performed on NSTL datasets, e.g., a Tennis-Volley sequence of 50 frames, to evaluate reconstruction quality with varying numbers of Gaussians.
-
-\paragraph{Spatial-Temporal Score and Pruning.} 
-To optimize memory usage, a Spatial-Temporal Score was computed for each Gaussian to identify short-lived or low-contribution Gaussians. Pruning was tested both after densification and during training to improve efficiency while maintaining visual fidelity. (Mathematical details and derivations are provided in Appendix~\ref{appendix:spatial_temporal_score}.)
-
-\paragraph{Fixed Background Training.} 
-Using pre-captured background images for each camera, the static scene was embedded directly, allowing Gaussians to focus on dynamic objects. 
-This reduced VRAM usage and enabled more accurate modeling of motion, particularly for fast-moving regions like hands and rackets. 
-The method involves replacing the standard background fill in the rasterizer with the corresponding reference image pixel values.
-
-\paragraph{Training adjustments.} 
-Additional modifications included fixing camera color and contrast parameters (\texttt{cam\_c} and \texttt{cam\_m}) and disabling the Floor-Loss, which was unsuitable for the NSTL’s slanted room coordinate system. These changes stabilized training and improved color fidelity.
-
-\subsubsection{External 3D Assets}
-Pipeline A also supports the integration of external 3D assets. Small object models produced with Trellis~\cite{xiang2024structured} can be exported as Gaussian representations and imported without modification. 
-This allows heterogeneous scene composition with small household objects (e.g., boxes, plants, or tools) alongside reconstructed models.
-
-\paragraph{Summary.} 
-Together, these training strategies enable the generation of modular Gaussian models suitable for both static and dynamic scenes. 
-Validation on benchmark and NSTL datasets confirmed that the reconstructed models are consistent, temporally coherent, and ready for downstream composition and rendering in Pipeline B (see Section~\ref{sec:pipelineB}).
-
-
-
-
 
 
 \section{Pipeline B: Composition and Synthetic Dataset Generation}
